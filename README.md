@@ -12,12 +12,12 @@ es exactamente lo que se publica.
 
 | Sección | Qué muestra |
 | --- | --- |
-| Portada | Titular, disponibilidad y cuatro datos verificables |
+| Portada | Titular, disponibilidad, cuatro datos verificables y descarga del CV |
+| Experiencia | Claro Colombia (vía Grupo CINTE), Softgic, BBVA, OdobGames y la UNAL, con fechas reales |
 | Trabajo destacado | **WebCraft** y **Carritos**, con los retos de ingeniería de cada uno |
-| Más trabajo | Monitor DIAN, los juegos de OdobGames en Google Play, Retro Arcade, Survival Tank y los repos del pregrado |
-| Habilidades | Seis grupos, cada uno atado a algo concreto del sitio |
-| Trayectoria | Cuatro hitos, sin fechas inventadas |
-| Contacto | Correo, GitHub y un botón para copiar la dirección |
+| Otros proyectos | Monitor DIAN, los juegos de OdobGames en Google Play, Retro Arcade, Survival Tank y los repos del pregrado |
+| Habilidades | Seis grupos: gobierno de datos, nube y big data, ciencia de datos e IA, SQL/ETL, BI, e ingeniería de software |
+| Contacto | Correo, CV, GitHub y un botón para copiar la dirección |
 
 ## Estructura
 
@@ -29,6 +29,7 @@ assets/js/voxel.js    Motor isométrico voxel propio (sin librerías).
 assets/js/i18n.js     Diccionario en inglés.
 assets/js/main.js     Idioma, navegación, scroll y utilidades.
 assets/img/og.png     Imagen de previsualización al compartir el enlace.
+assets/cv/            CV en PDF, enlazado desde la portada y desde Contacto.
 tools/og.html         Plantilla para regenerar assets/img/og.png.
 .github/workflows/    Despliegue automático a GitHub Pages.
 ```
@@ -57,6 +58,13 @@ pierde el foco, y con `prefers-reduced-motion` se dibuja un solo cuadro estátic
 **Para reemplazarlas por capturas reales**, cambia el `<canvas data-voxel="...">`
 de cada tarjeta por un `<img>` y borra el párrafo `.media-note` que aclara que es
 una ilustración.
+
+## Actualizar el CV
+
+Reemplaza `assets/cv/CV-Oscar-Ordonez.pdf` conservando el nombre y los enlaces
+siguen funcionando. Si cambias de experiencia laboral, la sección `#experiencia`
+de `index.html` y sus claves `exp.*` en `assets/js/i18n.js` son lo único que hay
+que tocar.
 
 ## Correr el sitio en local
 
