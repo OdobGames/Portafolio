@@ -176,7 +176,7 @@
       </div>
       <div class="fact" data-reveal>
         <b data-i18n="fact.4.n">Colombia</b>
-        <span data-i18n="fact.4.t">Zona horaria de América, abierto a equipos remotos</span>
+        <span data-i18n="fact.4.t">UTC−5: jornada completa en paralelo con Estados Unidos</span>
       </div>
     </div>
 
@@ -204,7 +204,7 @@
       <!-- WebCraft -->
       <article class="project" data-reveal>
         <div class="project-body">
-          <p class="project-status"><span class="dot" aria-hidden="true"></span><span data-i18n="work.live">En vivo</span></p>
+          <p class="project-status"><span class="dot" aria-hidden="true"></span><span data-i18n="work.live">En vivo</span><span class="sep" aria-hidden="true">·</span><span class="scope" data-i18n="work.webcraft.scope">Proyecto propio, de punta a punta</span></p>
           <h3>WebCraft</h3>
           <p class="hook" data-i18n="work.webcraft.hook">Un cliente de Minecraft que corre en el navegador y se conecta a servidores de Java Edition.</p>
           <p class="body" data-i18n="work.webcraft.body">
@@ -224,7 +224,7 @@
             <li>
               <span class="num" aria-hidden="true">02</span>
               <div>
-                <b data-i18n="work.webcraft.c2t">Un mundo voxel a 60 fps</b>
+                <b data-i18n="work.webcraft.c2t">Un mundo voxel, cuadro a cuadro</b>
                 <p data-i18n="work.webcraft.c2b">Los chunks llegan comprimidos y hay que decodificarlos, convertirlos en geometría y dibujarlos sin bloquear el hilo que mantiene viva la interfaz.</p>
               </div>
             </li>
@@ -280,7 +280,7 @@
       <!-- Carritos -->
       <article class="project project--alt project--teal" data-reveal>
         <div class="project-body">
-          <p class="project-status"><span class="dot" aria-hidden="true"></span><span data-i18n="work.live2">En vivo</span></p>
+          <p class="project-status"><span class="dot" aria-hidden="true"></span><span data-i18n="work.live2">En vivo</span><span class="sep" aria-hidden="true">·</span><span class="scope" data-i18n="work.carritos.scope">Proyecto propio, de punta a punta</span></p>
           <h3>Carritos</h3>
           <p class="hook" data-i18n="work.carritos.hook">Un juego de karts voxel con multijugador en línea, al estilo de Mario Kart.</p>
           <p class="body" data-i18n="work.carritos.body">
@@ -308,7 +308,7 @@
               <span class="num" aria-hidden="true">03</span>
               <div>
                 <b data-i18n="work.carritos.c3t">Física que se siente bien</b>
-                <p data-i18n="work.carritos.c3b">Derrape, aceleración y colisiones tienen que ser divertidos y además deterministas: la diversión y la corrección tiran en direcciones opuestas.</p>
+                <p data-i18n="work.carritos.c3b">Derrape, aceleración y colisiones tienen que sentirse bien y verse igual para todos a la vez: la diversión y la exactitud tiran en direcciones opuestas.</p>
               </div>
             </li>
             <li>
@@ -324,7 +324,7 @@
             <span class="tag" data-i18n="tag.rtmp">Multijugador en tiempo real</span>
             <span class="tag" data-i18n="tag.voxelgfx">Gráficos voxel</span>
             <span class="tag" data-i18n="tag.physics">Física de juego</span>
-            <span class="tag" data-i18n="tag.ws">WebSockets</span>
+            <span class="tag" data-i18n="tag.statesync">Sincronización de estado</span>
             <span class="tag" data-i18n="tag.cfpages">Cloudflare Pages</span>
           </div>
 
@@ -356,6 +356,16 @@
     </div>
   </div>
 </section>
+
+<div class="shell">
+  <aside class="mid-cta" data-reveal>
+    <p data-i18n="midcta.text">¿Te interesa cómo está construido alguno de los dos? Escríbeme y te lo cuento por dentro.</p>
+    <a class="btn btn-ghost btn-sm" href="#contacto">
+      <span data-i18n="midcta.cta">Hablemos</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </aside>
+</div>
 
 <!-- ============================================================ more -->
 <section id="mas">
@@ -389,13 +399,18 @@
 
       <article class="card" data-reveal>
         <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m3 7 9-4 9 4-9 4-9-4Z"/><path d="m3 12 9 4 9-4"/><path d="m3 17 9 4 9-4"/></svg></div>
-        <p class="card-kind" data-i18n="more.play.kind">Unity · Android · Google Play</p>
+        <p class="card-kind" data-i18n="more.play.kind">Android · Google Play</p>
         <h3 data-i18n="more.play.title">OdobGames en Google Play</h3>
         <p data-i18n="more.play.body">
           El estudio con el que publiqué tres juegos: Heart Tale, un combate infinito al estilo
           Undertale; Mordecai Infinite Runner, con marcadores en línea; y 3D Cube Parkour, un
-          parkour voxel con clasificación global. Diseño, desarrollo y publicación en la tienda.
+          parkour voxel con clasificación global. Cada título tiene su ficha pública en la tienda.
         </p>
+        <ul class="stores" data-i18n-attr="aria-label:more.play.storesLabel" aria-label="Juegos en Google Play">
+          <li><a href="https://play.google.com/store/apps/details?id=com.Odob.HeartTale" target="_blank" rel="noopener noreferrer">Heart Tale</a></li>
+          <li><a href="https://play.google.com/store/apps/details?id=com.OdobGames.MordecaiInfiniteRunner" target="_blank" rel="noopener noreferrer">Mordecai Infinite Runner</a></li>
+          <li><a href="https://play.google.com/store/apps/details?id=com.OdobGames.TikTokMinecraftFilterGame" target="_blank" rel="noopener noreferrer">3D Cube Parkour</a></li>
+        </ul>
         <a class="link" href="https://odobgames.github.io/OdobGames" target="_blank" rel="noopener noreferrer">
           <span data-i18n="more.play.link">Ver el estudio</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
@@ -464,7 +479,7 @@
       <div class="skill" data-reveal>
         <h3 data-i18n="skills.g1t">Gráficos y tiempo real</h3>
         <p data-i18n="skills.g1b">Renderizado voxel, proyección isométrica, bucles de animación y presupuesto de cuadro. El motor que dibuja las escenas de esta página lo escribí sin librerías.</p>
-        <div class="tags"><span class="tag" data-i18n="tag.canvas">Canvas 2D</span><span class="tag" data-i18n="tag.webgl">WebGL</span><span class="tag" data-i18n="tag.meshing">Mallado voxel</span><span class="tag" data-i18n="tag.gameloop">Bucle de juego</span><span class="tag" data-i18n="tag.profiling">Perfilado</span></div>
+        <div class="tags"><span class="tag" data-i18n="tag.canvas">Canvas 2D</span><span class="tag" data-i18n="tag.voxelrender">Renderizado voxel</span><span class="tag" data-i18n="tag.iso">Proyección isométrica</span><span class="tag" data-i18n="tag.gameloop">Bucle de juego</span><span class="tag" data-i18n="tag.profiling">Perfilado</span></div>
       </div>
 
       <div class="skill" data-reveal>
@@ -494,7 +509,7 @@
       <div class="skill" data-reveal>
         <h3 data-i18n="skills.g6t">Desarrollo de videojuegos</h3>
         <p data-i18n="skills.g6b">Del prototipo a la tienda: diseño de mecánicas, publicación en Google Play y todo lo aburrido que hay entre las dos cosas.</p>
-        <div class="tags"><span class="tag" data-i18n="tag.unity">Unity</span><span class="tag" data-i18n="tag.csharp">C#</span><span class="tag" data-i18n="tag.android">Android</span><span class="tag" data-i18n="tag.gamedesign">Diseño de juego</span><span class="tag" data-i18n="tag.shipping">Publicación</span></div>
+        <div class="tags"><span class="tag" data-i18n="tag.android">Android</span><span class="tag" data-i18n="tag.gplay">Google Play</span><span class="tag" data-i18n="tag.gamedesign">Diseño de juego</span><span class="tag" data-i18n="tag.gameloop">Bucle de juego</span><span class="tag" data-i18n="tag.shipping">Publicación</span></div>
       </div>
     </div>
   </div>
@@ -571,11 +586,12 @@
 
 <footer>
   <div class="shell foot">
-    <p data-i18n="footer.left">© 2026 Oscar Ordoñez — Bogotá, Colombia</p>
+    <p data-i18n="footer.left">© 2026 Oscar Ordoñez — Colombia · Sitio estático escrito a mano, sin framework</p>
     <nav class="foot-links" data-i18n-attr="aria-label:a11y.footer" aria-label="Enlaces del pie">
       <a href="https://github.com/OdobGames" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="https://webcraft-8p8.pages.dev/" target="_blank" rel="noopener noreferrer">WebCraft</a>
       <a href="https://carritos-bty.pages.dev/" target="_blank" rel="noopener noreferrer">Carritos</a>
+      <a href="https://github.com/OdobGames/Pruebaclaude" target="_blank" rel="noopener noreferrer" data-i18n="footer.source">Código de este sitio</a>
       <a href="mailto:lordkinght97@gmail.com" data-i18n="footer.mail">Correo</a>
     </nav>
   </div>

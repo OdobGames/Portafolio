@@ -61,6 +61,11 @@
     });
 
     document.documentElement.setAttribute('lang', lang);
+    if (window.history && history.replaceState) {
+      var url = new URL(window.location.href);
+      url.searchParams.set('lang', lang);
+      history.replaceState(null, '', url.toString());
+    }
     document.querySelectorAll('[data-lang]').forEach(function (btn) {
       btn.setAttribute('aria-pressed', String(btn.getAttribute('data-lang') === lang));
     });
@@ -68,12 +73,21 @@
   }
 
   function initLang() {
+    // Precedence: an explicit ?lang= in the link, then a previous choice on this
+    // device, then the browser's own language. Spanish is the document's own
+    // language, so only leave it when something actually asks.
+    var fromUrl = null;
+    try {
+      var q = new URL(window.location.href).searchParams.get('lang');
+      if (q === 'es' || q === 'en') fromUrl = q;
+    } catch (e) { /* very old browser */ }
+
     var stored = null;
     try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) { /* ignore */ }
-    // Spanish is the document's own language; only switch away from it when the
-    // visitor asked, or when their browser clearly is not Spanish-speaking.
-    var guess = stored || ((navigator.language || 'es').toLowerCase().indexOf('es') === 0 ? 'es' : 'en');
-    if (guess === 'en') applyLang('en'); else applyLang('es');
+
+    var guess = fromUrl || stored ||
+      ((navigator.language || 'es').toLowerCase().indexOf('es') === 0 ? 'es' : 'en');
+    applyLang(guess === 'en' ? 'en' : 'es');
 
     document.querySelectorAll('[data-lang]').forEach(function (btn) {
       btn.addEventListener('click', function () { applyLang(btn.getAttribute('data-lang')); });

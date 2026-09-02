@@ -42,7 +42,7 @@ window.I18N = {
     'fact.3.n': 'UNAL',
     'fact.3.t': 'Computer Science, Universidad Nacional de Colombia',
     'fact.4.n': 'Colombia',
-    'fact.4.t': 'Americas time zone, open to remote teams',
+    'fact.4.t': 'UTC−5: a full working day overlapping the United States',
 
     /* ----------------------------------------------------- flagship work */
     'work.eyebrow': 'Selected work',
@@ -51,11 +51,13 @@ window.I18N = {
     'work.live': 'Live',
     'work.live2': 'Live',
 
+    'work.webcraft.scope': 'Built end to end, on my own',
+    'work.carritos.scope': 'Built end to end, on my own',
     'work.webcraft.hook': 'A Minecraft client that runs in the browser and connects to Java Edition servers.',
     'work.webcraft.body': "My own implementation — not a port and not a wrapper around an existing client. Open a tab, connect to a real Minecraft Java server, and the world appears: no installer, no launcher, no Java runtime.",
     'work.webcraft.c1t': 'Speaking the protocol, byte by byte',
     'work.webcraft.c1b': 'A Java Edition server expects its own binary format: handshake, connection states, compression, and hundreds of packets that have to be serialised exactly the way it asks for them.',
-    'work.webcraft.c2t': 'A voxel world at 60 fps',
+    'work.webcraft.c2t': 'A voxel world, frame by frame',
     'work.webcraft.c2b': 'Chunks arrive compressed. They have to be decoded, turned into geometry and drawn without blocking the thread that keeps the interface alive.',
     'work.webcraft.c3t': 'Networking from inside a sandbox',
     'work.webcraft.c3b': 'Browsers do not open raw TCP sockets. Reaching a server designed for desktop clients means solving transport without breaking the semantics of the protocol.',
@@ -72,12 +74,15 @@ window.I18N = {
     'work.carritos.c2t': 'Latency you can feel through the wheel',
     'work.carritos.c2b': 'Controls that respond demand prediction on the client and correction when the authoritative version lands — without the correction feeling like a yank.',
     'work.carritos.c3t': 'Physics that feels good',
-    'work.carritos.c3b': 'Drift, acceleration and collisions have to be fun and deterministic at once, and those two goals pull in opposite directions.',
+    'work.carritos.c3b': 'Drift, acceleration and collisions have to feel good and look the same to everyone at once, and those two goals pull in opposite directions.',
     'work.carritos.c4t': 'Rooms and the shape of a match',
     'work.carritos.c4b': 'Join, start, finish, go again. Someone has to decide who gets in, who dropped, and what happens to the race when a player disconnects.',
     'work.carritos.cta': 'Play Carritos',
     'work.carritos.canvas': 'Animation of voxel karts running a lap around an isometric circuit',
     'work.carritos.note': 'An animated scene drawn on this page by the same isometric engine. It is not a screenshot of Carritos — the real game is one click away.',
+
+    'midcta.text': 'Curious how either one is put together? Write to me and I will walk you through it.',
+    'midcta.cta': "Let's talk",
 
     /* ------------------------------------------------------------- more */
     'more.eyebrow': 'More work',
@@ -88,9 +93,10 @@ window.I18N = {
     'more.dian.body': "Watches Colombia's DIAN appointment page with headless Chromium and emails an alert the moment a slot opens. It runs in three different places — a PC, GitHub Actions, or a systemd-managed VM — keeps its credentials out of the source in environment variables, installs under its own system user, and cleans up after itself so it can stay switched on for months.",
     'more.dian.link': 'View the repository',
 
-    'more.play.kind': 'Unity · Android · Google Play',
+    'more.play.kind': 'Android · Google Play',
     'more.play.title': 'OdobGames on Google Play',
-    'more.play.body': 'The studio I shipped three games under: Heart Tale, an endless Undertale-style battle; Mordecai Infinite Runner, with online scoreboards; and 3D Cube Parkour, a voxel parkour game with global rankings. Design, development, and getting them onto the store.',
+    'more.play.body': 'The studio I shipped three games under: Heart Tale, an endless Undertale-style battle; Mordecai Infinite Runner, with online scoreboards; and 3D Cube Parkour, a voxel parkour game with global rankings. Every title has a public listing on the store.',
+    'more.play.storesLabel': 'Games on Google Play',
     'more.play.link': 'Visit the studio',
 
     'more.retro.kind': 'Web · Front-end',
@@ -158,7 +164,6 @@ window.I18N = {
     'tag.cfpages': "Cloudflare Pages",
     'tag.clientserver': "Client/server",
     'tag.crypto': "Cryptography",
-    'tag.csharp': "C#",
     'tag.css': "Modern CSS",
     'tag.gamedesign': "Game design",
     'tag.gameloop': "Game loop",
@@ -168,7 +173,8 @@ window.I18N = {
     'tag.js': "JavaScript",
     'tag.linux': "Linux",
     'tag.mcproto': "Minecraft Java protocol",
-    'tag.meshing': "Voxel meshing",
+    'tag.iso': "Isometric projection",
+    'tag.gplay': "Google Play",
     'tag.ml': "Machine learning",
     'tag.netprog': "Network programming",
     'tag.physics': "Game physics",
@@ -181,15 +187,14 @@ window.I18N = {
     'tag.sql': "SQL",
     'tag.statesync': "State synchronisation",
     'tag.systemd': "systemd",
-    'tag.unity': "Unity",
     'tag.voxelgfx': "Voxel graphics",
     'tag.voxelrender': "Voxel rendering",
     'tag.wcag': "WCAG",
-    'tag.webgl': "WebGL",
     'tag.ws': "WebSockets",
 
     /* ----------------------------------------------------------- footer */
-    'footer.left': '© 2026 Oscar Ordoñez — Bogotá, Colombia',
+    'footer.left': '© 2026 Oscar Ordoñez — Colombia · Hand-written static site, no framework',
+    'footer.source': 'Source of this site',
     'footer.mail': 'Email'
   }
 };

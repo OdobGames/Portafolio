@@ -548,12 +548,14 @@
     if ('IntersectionObserver' in global) {
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
+          scene.visible = e.isIntersecting;
           if (e.isIntersecting) scene.start();
           else scene.stop();
         });
       }, { rootMargin: '120px' });
       io.observe(canvas);
     } else {
+      scene.visible = true;
       scene.start();
     }
     return scene;
@@ -569,8 +571,7 @@
       resizeTimer = setTimeout(function () {
         scenes.forEach(function (s) {
           s.resize();
-          if (s.running) return;
-          if (s.visible !== false) s.start();
+          if (!s.running && s.visible) s.start();
         });
       }, 180);
     });
@@ -579,7 +580,7 @@
     document.addEventListener('visibilitychange', function () {
       scenes.forEach(function (s) {
         if (document.hidden) s.stop();
-        else s.start();
+        else if (s.visible) s.start();
       });
     });
   }
