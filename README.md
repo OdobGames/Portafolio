@@ -83,6 +83,17 @@ npx playwright screenshot --viewport-size=1200,630 --wait-for-timeout=3000 \
 ## Despliegue
 
 `.github/workflows/deploy.yml` publica el sitio en GitHub Pages en cada push a
-`main` o a la rama de trabajo. El paso `configure-pages` intenta activar Pages
-por sí solo; si el repositorio no lo permite, hay que encenderlo una vez en
-**Settings → Pages → Source: GitHub Actions**.
+`main` o a la rama de trabajo.
+
+**Hay un paso manual que solo se hace una vez.** El token del workflow puede
+publicar en Pages, pero no puede *crear* el sitio de Pages (`Resource not
+accessible by integration`), así que primero hay que encenderlo a mano:
+
+> **Settings → Pages → Build and deployment → Source: `GitHub Actions`**
+
+Después de eso, cada push despliega solo.
+
+Si prefieres no usar Actions, la alternativa es igual de válida para un sitio
+estático: **Settings → Pages → Source: `Deploy from a branch`**, eligiendo esta
+rama y la carpeta `/ (root)`. El archivo `.nojekyll` ya está para que Pages
+sirva las rutas tal cual.

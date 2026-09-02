@@ -1,5 +1,11 @@
 name: Deploy to GitHub Pages
 
+# One-time setup, required once per repository and not grantable from here:
+#   Settings → Pages → Build and deployment → Source: "GitHub Actions"
+# The workflow token can publish to Pages but is not allowed to create the Pages
+# site itself ("Resource not accessible by integration"), so that switch has to
+# be flipped by hand the first time. After that, every push deploys.
+
 on:
   push:
     branches:
@@ -28,10 +34,6 @@ jobs:
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
-        with:
-          # Turns GitHub Pages on for this repository if it is not enabled yet,
-          # so the site goes live without touching the repository settings by hand.
-          enablement: true
 
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
