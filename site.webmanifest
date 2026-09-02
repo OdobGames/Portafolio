@@ -1,0 +1,13 @@
+{
+  "name": "Oscar Ordoñez — Software Engineer",
+  "short_name": "Oscar Ordoñez",
+  "description": "Portfolio: browser-based real-time systems, voxel games and production automation.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07080c",
+  "theme_color": "#07080c",
+  "icons": [
+    { "src": "assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
