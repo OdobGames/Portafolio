@@ -87,6 +87,9 @@ p { margin: 0; text-wrap: pretty; }
   outline: 2px solid var(--accent-2);
   outline-offset: 3px;
   border-radius: 4px;
+  /* A dark inner ring, so the outline stays visible even on the accent-2 half
+     of a gradient button. */
+  box-shadow: 0 0 0 2px var(--bg);
 }
 
 /* Screen-reader-only, and the skip link that becomes visible on focus. */
@@ -158,6 +161,22 @@ p { margin: 0; text-wrap: pretty; }
 }
 .lang button[aria-pressed='true'] { background: rgba(255,255,255,.10); color: var(--text); }
 .lang button:hover { color: var(--text); }
+
+.icon-btn {
+  display: grid; place-items: center; width: 34px; height: 34px; cursor: pointer;
+  border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.03);
+  color: var(--text-soft); transition: color .2s, border-color .2s, background .2s;
+}
+.icon-btn:hover { color: var(--text); border-color: var(--line-strong); background: rgba(255,255,255,.07); }
+.icon-btn svg { width: 15px; height: 15px; }
+.icon-btn .i-play { display: none; }
+.icon-btn[aria-pressed='true'] .i-pause { display: none; }
+.icon-btn[aria-pressed='true'] .i-play { display: block; }
+.icon-btn[aria-pressed='true'] { color: var(--accent-2); border-color: rgba(53,214,193,.4); }
+
+/* With motion off, the decorative pulses stop too, not just the canvases. */
+.motion-off .badge .dot::after,
+.motion-off .scroll-cue i::after { animation: none; }
 
 .burger { display: none; }
 
@@ -238,7 +257,14 @@ p { margin: 0; text-wrap: pretty; }
   margin-top: var(--s5); max-width: 58ch; font-size: clamp(1rem, 1.6vw, 1.15rem);
   color: var(--text-soft);
 }
-.hero-actions { display: flex; flex-wrap: wrap; gap: var(--s3); margin-top: var(--s6); }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s3); margin-top: var(--s6); }
+.quiet-link {
+  display: inline-flex; align-items: center; gap: 8px; padding: 13px 6px;
+  font-family: var(--font-mono); font-size: 13px; color: var(--text-dim);
+  transition: color .2s var(--ease);
+}
+.quiet-link svg { width: 16px; height: 16px; }
+.quiet-link:hover { color: var(--text); }
 
 .facts {
   display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -467,6 +493,10 @@ section { position: relative; padding: var(--s10) 0; }
 /* ================================================================ footer */
 
 footer { border-top: 1px solid var(--line); padding: var(--s7) 0; }
+.legal {
+  margin-top: var(--s5); padding-top: var(--s5); border-top: 1px solid var(--line);
+  font-size: 12px; line-height: 1.6; color: var(--text-dim); max-width: 92ch;
+}
 .foot { display: flex; flex-wrap: wrap; gap: var(--s4); align-items: center; justify-content: space-between; }
 .foot p { font-size: 13.5px; color: var(--text-dim); }
 .foot-links { display: flex; flex-wrap: wrap; gap: var(--s5); }
@@ -559,6 +589,16 @@ footer { border-top: 1px solid var(--line); padding: var(--s7) 0; }
 @media (max-width: 460px) {
   .facts { grid-template-columns: 1fr 1fr; }
   .hero-actions .btn { width: 100%; }
+}
+
+/* Forced-colors mode drops background images, which would erase a headline
+   painted with background-clip: text. Hand it back a real colour. */
+@media (forced-colors: active) {
+  .hero h1 .grad, .lost h1 span {
+    -webkit-text-fill-color: currentColor;
+    background: none; color: CanvasText;
+  }
+  .btn-primary { border-color: ButtonText; }
 }
 
 /* Motion is decoration here: when it is unwelcome, remove it entirely rather

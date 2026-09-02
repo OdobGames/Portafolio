@@ -15,24 +15,26 @@ window.I18N = {
     'a11y.menu': 'Open menu',
     'a11y.footer': 'Footer links',
     'a11y.top': 'Back to top',
+    'a11y.motion': 'Pause the animations',
 
     /* ---------------------------------------------------------- navigation */
     'nav.work': 'Work',
-    'nav.more': 'More',
+    'nav.more': 'Other work',
     'nav.skills': 'Skills',
     'nav.path': 'Path',
     'nav.contact': 'Contact',
     'nav.cta': "Let's talk",
 
     /* --------------------------------------------------------------- hero */
-    'hero.badge': 'Open to internships and junior roles — Colombia and remote',
+    'hero.badge': 'Open to software engineering roles — Colombia and remote',
     'hero.kicker': 'Software engineering · Computer Science',
     'hero.title1': 'I build',
     'hero.title2': 'real-time systems',
     'hero.title3': 'that run inside a browser tab.',
-    'hero.lede': "I'm Oscar Ordoñez, a Computer Science student at Universidad Nacional de Colombia and the founder of OdobGames. My work sits where graphics, networking and systems meet: a Minecraft client that runs in the browser, a voxel kart racer with online multiplayer, and automation that has been running for months without anyone touching it.",
+    'hero.lede': "I'm Oscar Ordoñez, a Computer Science student at Universidad Nacional de Colombia and the founder of OdobGames. My work sits where graphics, networking and systems meet: a Minecraft client that runs in the browser, a voxel kart racer with online multiplayer, and automation built to run for months without anyone touching it.",
     'hero.cta1': 'See the work',
-    'hero.cta2': 'Read the code on GitHub',
+    'hero.cta2': 'Try WebCraft now',
+    'hero.cta3': 'github.com/OdobGames',
     'hero.scroll': 'Start with the work',
 
     'fact.1.n': '2 live projects',
@@ -42,11 +44,11 @@ window.I18N = {
     'fact.3.n': 'UNAL',
     'fact.3.t': 'Computer Science, Universidad Nacional de Colombia',
     'fact.4.n': 'Colombia',
-    'fact.4.t': 'UTC−5: a full working day overlapping the United States',
+    'fact.4.t': 'UTC−5: the same working day as the US east coast',
 
     /* ----------------------------------------------------- flagship work */
     'work.eyebrow': 'Selected work',
-    'work.title': 'Two hard things, both running in production',
+    'work.title': 'Two hard things, both live and playable',
     'work.intro': 'Both run in the browser with nothing to install, and you can open either one right now. These are not course exercises — they are complete systems I had to design end to end.',
     'work.live': 'Live',
     'work.live2': 'Live',
@@ -56,7 +58,7 @@ window.I18N = {
     'work.webcraft.hook': 'A Minecraft client that runs in the browser and connects to Java Edition servers.',
     'work.webcraft.body': "My own implementation — not a port and not a wrapper around an existing client. Open a tab, connect to a real Minecraft Java server, and the world appears: no installer, no launcher, no Java runtime.",
     'work.webcraft.c1t': 'Speaking the protocol, byte by byte',
-    'work.webcraft.c1b': 'A Java Edition server expects its own binary format: handshake, connection states, compression, and hundreds of packets that have to be serialised exactly the way it asks for them.',
+    'work.webcraft.c1b': 'A Java Edition server expects its own binary format: handshake, connection states, compression, and hundreds of packets that have to be serialized exactly the way it asks for them.',
     'work.webcraft.c2t': 'A voxel world, frame by frame',
     'work.webcraft.c2b': 'Chunks arrive compressed. They have to be decoded, turned into geometry and drawn without blocking the thread that keeps the interface alive.',
     'work.webcraft.c3t': 'Networking from inside a sandbox',
@@ -85,7 +87,7 @@ window.I18N = {
     'midcta.cta': "Let's talk",
 
     /* ------------------------------------------------------------- more */
-    'more.eyebrow': 'More work',
+    'more.eyebrow': 'Other work',
     'more.title': 'Production, shipped games, and the fundamentals',
     'more.intro': 'Writing an engine is one thing. Keeping something alive months later, on a machine nobody is watching, is another.',
 
@@ -119,7 +121,7 @@ window.I18N = {
     'skills.g1t': 'Graphics and real time',
     'skills.g1b': 'Voxel rendering, isometric projection, animation loops and frame budgets. The engine drawing the scenes on this page is mine, with no libraries.',
     'skills.g2t': 'Networking and protocols',
-    'skills.g2b': 'Binary formats, connection state, and live synchronisation across clients — the heart of both WebCraft and Carritos.',
+    'skills.g2b': 'Binary formats, connection state, and live synchronization across clients — the heart of both WebCraft and Carritos.',
     'skills.g3t': 'The web platform',
     'skills.g3b': 'Modern JavaScript without leaning on a framework, real accessibility, performance, and continuous deployment to the edge.',
     'skills.g4t': 'Automation and operations',
@@ -148,7 +150,7 @@ window.I18N = {
     /* ---------------------------------------------------------- contact */
     'contact.eyebrow': 'Contact',
     'contact.title': 'Looking for someone who finishes what they start?',
-    'contact.body': 'I am open to internships and junior software engineering roles, on-site in Colombia or remote. If something here caught your attention, the best first move is to open one of the projects and tell me what you would like to see inside it.',
+    'contact.body': 'I am open to software engineering roles, on-site in Colombia or remote. If something here caught your attention, the best first move is to open one of the projects and tell me what you would like to see inside it.',
     'contact.mail': 'Send me an email',
     'contact.github': 'github.com/OdobGames',
     'contact.copied': 'Copied!',
@@ -185,7 +187,7 @@ window.I18N = {
     'tag.shipping': "Store publishing",
     'tag.smtp': "SMTP",
     'tag.sql': "SQL",
-    'tag.statesync': "State synchronisation",
+    'tag.statesync': "State synchronization",
     'tag.systemd': "systemd",
     'tag.voxelgfx': "Voxel graphics",
     'tag.voxelrender': "Voxel rendering",
@@ -195,6 +197,7 @@ window.I18N = {
     /* ----------------------------------------------------------- footer */
     'footer.left': '© 2026 Oscar Ordoñez — Colombia · Hand-written static site, no framework',
     'footer.source': 'Source of this site',
-    'footer.mail': 'Email'
+    'footer.mail': 'Email',
+    'footer.legal': 'Minecraft is a trademark of Mojang Studios and Mario Kart of Nintendo. The projects on this page are not affiliated with or endorsed by either company. · Last updated: September 2026.'
   }
 };

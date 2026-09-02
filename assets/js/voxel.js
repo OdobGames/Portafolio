@@ -352,6 +352,10 @@
     ? global.matchMedia('(prefers-reduced-motion: reduce)')
     : { matches: false };
 
+  // WCAG 2.2.2: animation that starts by itself and runs indefinitely needs a
+  // way to stop it. When paused, scenes still draw their final resting frame.
+  var paused = false;
+
   function Scene(canvas, kind, options) {
     this.canvas = canvas;
     this.kind = kind;
@@ -519,7 +523,7 @@
     if (this.running) return;
     this.running = true;
     this.last = 0;
-    if (reduceMotion.matches) {
+    if (reduceMotion.matches || paused) {
       // One static, fully-resolved frame. No loop, no motion.
       this.draw(1);
       this.draw(1);
@@ -591,5 +595,20 @@
     init();
   }
 
-  global.VoxelScenes = { scenes: scenes, mount: mount };
+  global.VoxelScenes = {
+    scenes: scenes,
+    mount: mount,
+    isPaused: function () { return paused; },
+    setPaused: function (value) {
+      paused = !!value;
+      scenes.forEach(function (s) {
+        if (paused) {
+          s.stop();
+          s.draw(1); // leave the scene resolved rather than half-drawn
+        } else if (s.visible) {
+          s.start();
+        }
+      });
+    }
+  };
 })(window);

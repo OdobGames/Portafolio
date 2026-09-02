@@ -188,6 +188,31 @@
     });
   }
 
+  /* -------------------------------------------------------- motion toggle */
+
+  function initMotion() {
+    var btn = document.getElementById('motion-toggle');
+    if (!btn) return;
+    // The renderer already renders a single static frame under
+    // prefers-reduced-motion, so there is nothing left for this to control.
+    if (reduced) { btn.hidden = true; return; }
+
+    var stored = null;
+    try { stored = localStorage.getItem('oo-motion'); } catch (e) { /* ignore */ }
+
+    function apply(off) {
+      if (window.VoxelScenes) window.VoxelScenes.setPaused(off);
+      btn.setAttribute('aria-pressed', String(off));
+      document.documentElement.classList.toggle('motion-off', off);
+      try { localStorage.setItem('oo-motion', off ? 'off' : 'on'); } catch (e) { /* ignore */ }
+    }
+
+    if (stored === 'off') apply(true);
+    btn.addEventListener('click', function () {
+      apply(btn.getAttribute('aria-pressed') !== 'true');
+    });
+  }
+
   /* ----------------------------------------------------------- copy mail */
 
   function initCopyMail() {
@@ -210,6 +235,7 @@
     initLang();
     initNav();
     initReveal();
+    initMotion();
     initCopyMail();
     document.documentElement.classList.add('js-ready');
   }

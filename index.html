@@ -6,10 +6,13 @@
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#07080c">
 
-<title>Oscar Ordoñez — Ingeniero de software · Sistemas en tiempo real en el navegador</title>
-<meta name="description" content="Portafolio de Oscar Ordoñez: estudiante de Ciencias de la Computación en la Universidad Nacional de Colombia y fundador de OdobGames. Cliente de Minecraft en el navegador, juego de karts voxel multijugador, automatización en producción y juegos publicados en Google Play.">
+<title>Oscar Ordoñez — Ingeniero de software · Portafolio</title>
+<meta name="description" content="Cliente de Minecraft en el navegador, karts voxel multijugador y automatización en Linux. Ciencias de la Computación en la UNAL, tres juegos en Google Play.">
 <meta name="author" content="Oscar Ordoñez">
 <link rel="canonical" href="https://odobgames.github.io/Pruebaclaude/">
+<link rel="alternate" hreflang="es" href="https://odobgames.github.io/Pruebaclaude/?lang=es">
+<link rel="alternate" hreflang="en" href="https://odobgames.github.io/Pruebaclaude/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://odobgames.github.io/Pruebaclaude/">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Oscar Ordoñez">
@@ -17,7 +20,7 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:url" content="https://odobgames.github.io/Pruebaclaude/">
 <meta property="og:title" content="Oscar Ordoñez — Ingeniero de software">
-<meta property="og:description" content="Cliente de Minecraft en el navegador, karts voxel multijugador y automatización que lleva meses corriendo sola. Ciencias de la Computación, Universidad Nacional de Colombia.">
+<meta property="og:description" content="Cliente de Minecraft en el navegador, karts voxel multijugador y automatización hecha para correr sola durante meses. Ciencias de la Computación, UNAL.">
 <meta property="og:image" content="https://odobgames.github.io/Pruebaclaude/assets/img/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -46,14 +49,15 @@
       "@type": "Person",
       "@id": "https://odobgames.github.io/Pruebaclaude/#oscar",
       "name": "Oscar Ordoñez",
-      "jobTitle": "Software Engineer",
+      "jobTitle": "Computer Science student",
       "description": "Computer Science student at Universidad Nacional de Colombia and founder of OdobGames. Builds browser-based real-time systems: a Minecraft client for the web, a voxel kart racer with online multiplayer, and production automation.",
       "url": "https://odobgames.github.io/Pruebaclaude/",
       "email": "mailto:lordkinght97@gmail.com",
       "address": { "@type": "PostalAddress", "addressCountry": "CO" },
-      "alumniOf": {
+      "affiliation": {
         "@type": "CollegeOrUniversity",
-        "name": "Universidad Nacional de Colombia"
+        "name": "Universidad Nacional de Colombia",
+        "url": "https://unal.edu.co/"
       },
       "knowsAbout": [
         "Real-time graphics", "Voxel rendering", "Network protocols",
@@ -103,7 +107,7 @@
 
     <nav class="nav-links" id="nav-links" aria-label="Principal">
       <a href="#proyectos" data-i18n="nav.work">Proyectos</a>
-      <a href="#mas" data-i18n="nav.more">Más trabajo</a>
+      <a href="#mas" data-i18n="nav.more">Otros proyectos</a>
       <a href="#habilidades" data-i18n="nav.skills">Habilidades</a>
       <a href="#trayectoria" data-i18n="nav.path">Trayectoria</a>
       <a href="#contacto" data-i18n="nav.contact">Contacto</a>
@@ -114,6 +118,11 @@
         <button type="button" data-lang="es" aria-pressed="true">ES</button>
         <button type="button" data-lang="en" aria-pressed="false">EN</button>
       </div>
+      <button class="icon-btn" type="button" id="motion-toggle" aria-pressed="false"
+              data-i18n-attr="aria-label:a11y.motion" aria-label="Pausar las animaciones">
+        <svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+        <svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+      </button>
       <a class="btn btn-primary btn-sm" href="#contacto" data-i18n="nav.cta">Hablemos</a>
       <button class="burger" type="button" aria-expanded="false" aria-controls="nav-links"
               data-i18n-attr="aria-label:a11y.menu" aria-label="Abrir menú">
@@ -131,7 +140,7 @@
   <div class="shell">
     <p class="badge" data-reveal>
       <span class="dot" aria-hidden="true"></span>
-      <span data-i18n="hero.badge">Disponible para prácticas y roles junior — Colombia y remoto</span>
+      <span data-i18n="hero.badge">Disponible para roles de ingeniería de software — Colombia y remoto</span>
     </p>
 
     <p class="kicker" data-reveal data-i18n="hero.kicker">Ingeniería de software · Ciencias de la Computación</p>
@@ -146,7 +155,7 @@
       Soy Oscar Ordoñez, estudiante de Ciencias de la Computación en la Universidad Nacional
       de Colombia y fundador de OdobGames. Mi trabajo vive donde los gráficos, las redes y
       los sistemas se cruzan: un cliente de Minecraft que corre en el navegador, un juego
-      de karts voxel con multijugador en línea y automatización que lleva meses funcionando
+      de karts voxel con multijugador en línea y automatización hecha para correr meses
       sin que nadie la toque.
     </p>
 
@@ -155,9 +164,13 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         <span data-i18n="hero.cta1">Ver los proyectos</span>
       </a>
-      <a class="btn btn-ghost" href="https://github.com/OdobGames" target="_blank" rel="noopener noreferrer">
+      <a class="btn btn-ghost" href="https://webcraft-8p8.pages.dev/" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+        <span data-i18n="hero.cta2">Probar WebCraft ahora</span>
+      </a>
+      <a class="quiet-link" href="https://github.com/OdobGames" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.6 4.7 18.6 5 18.6 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
-        <span data-i18n="hero.cta2">Ver el código en GitHub</span>
+        <span data-i18n="hero.cta3">github.com/OdobGames</span>
       </a>
     </div>
 
@@ -176,7 +189,7 @@
       </div>
       <div class="fact" data-reveal>
         <b data-i18n="fact.4.n">Colombia</b>
-        <span data-i18n="fact.4.t">UTC−5: jornada completa en paralelo con Estados Unidos</span>
+        <span data-i18n="fact.4.t">UTC−5: misma jornada que la costa este de EE. UU.</span>
       </div>
     </div>
 
@@ -192,7 +205,7 @@
   <div class="shell">
     <header class="section-head" data-reveal>
       <p class="eyebrow" data-i18n="work.eyebrow">Trabajo destacado</p>
-      <h2 data-i18n="work.title">Dos cosas difíciles, funcionando en producción</h2>
+      <h2 data-i18n="work.title">Dos cosas difíciles, en línea y jugables</h2>
       <p data-i18n="work.intro">
         Ambos corren en el navegador, sin instalar nada, y se pueden abrir ahora mismo.
         No son ejercicios de curso: son sistemas completos que tuve que diseñar de punta a punta.
@@ -268,7 +281,8 @@
             <canvas data-voxel="world" data-seed="1043"
                     data-i18n-attr="aria-label:work.webcraft.canvas"
                     role="img"
-                    aria-label="Animación de una isla voxel que se carga por columnas, evocando la llegada de chunks desde un servidor"></canvas>
+                    data-i18n="work.webcraft.canvas"
+                    aria-label="Animación de una isla voxel que se carga por columnas, evocando la llegada de chunks desde un servidor">Animación de una isla voxel que se carga por columnas, evocando la llegada de chunks desde un servidor.</canvas>
           </div>
           <p class="media-note" data-i18n="work.webcraft.note">
             Ilustración renderizada en esta página con un motor isométrico propio: un mundo que
@@ -344,7 +358,8 @@
             <canvas data-voxel="karts" data-seed="77"
                     data-i18n-attr="aria-label:work.carritos.canvas"
                     role="img"
-                    aria-label="Animación de karts voxel dando una vuelta a un circuito isométrico"></canvas>
+                    data-i18n="work.carritos.canvas"
+                    aria-label="Animación de karts voxel dando una vuelta a un circuito isométrico">Animación de karts voxel dando una vuelta a un circuito isométrico.</canvas>
           </div>
           <p class="media-note" data-i18n="work.carritos.note">
             Escena animada en esta misma página con el motor isométrico del sitio. No es una
@@ -371,7 +386,7 @@
 <section id="mas">
   <div class="shell">
     <header class="section-head" data-reveal>
-      <p class="eyebrow" data-i18n="more.eyebrow">Más trabajo</p>
+      <p class="eyebrow" data-i18n="more.eyebrow">Otros proyectos</p>
       <h2 data-i18n="more.title">Producción, juegos publicados y fundamentos</h2>
       <p data-i18n="more.intro">
         Escribir un motor es una cosa. Que algo siga funcionando meses después, en una máquina
@@ -555,8 +570,7 @@
       <p class="eyebrow" style="justify-content:center" data-i18n="contact.eyebrow">Contacto</p>
       <h2 data-i18n="contact.title">¿Buscas a alguien que termine lo que empieza?</h2>
       <p data-i18n="contact.body">
-        Estoy abierto a prácticas y a roles junior de ingeniería de software, presenciales en
-        Colombia o remotos. Si algo de esta página te interesó, el mejor primer paso es abrir
+        Estoy abierto a roles de ingeniería de software, presenciales en Colombia o remotos. Si algo de esta página te interesó, el mejor primer paso es abrir
         uno de los proyectos y escribirme qué te gustaría ver por dentro.
       </p>
 
@@ -594,6 +608,13 @@
       <a href="https://github.com/OdobGames/Pruebaclaude" target="_blank" rel="noopener noreferrer" data-i18n="footer.source">Código de este sitio</a>
       <a href="mailto:lordkinght97@gmail.com" data-i18n="footer.mail">Correo</a>
     </nav>
+  </div>
+  <div class="shell">
+    <p class="legal" data-i18n="footer.legal">
+      Minecraft es una marca registrada de Mojang Studios y Mario Kart de Nintendo. Los
+      proyectos de esta página no están afiliados a ninguna de las dos empresas ni cuentan
+      con su respaldo. · Última actualización: septiembre de 2026.
+    </p>
   </div>
 </footer>
 
