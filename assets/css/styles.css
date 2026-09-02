@@ -596,6 +596,8 @@ footer { border-top: 1px solid var(--line); padding: var(--s7) 0; }
   .burger[aria-expanded='true'] span::after { transform: translateY(-5.5px) rotate(-45deg); }
   .nav .btn-primary { display: none; }
   .brand em { display: none; } /* the studio suffix wraps the header on phones */
+  .brand span { font-size: 14px; white-space: nowrap; }
+  .brand svg { width: 22px; height: 22px; }
 
   .grid, .skills { grid-template-columns: 1fr; }
   .card-kind, .card h3 { min-height: 0; }
