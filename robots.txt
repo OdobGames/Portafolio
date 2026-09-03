@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://odobgames.github.io/Pruebaclaude/sitemap.xml
+Sitemap: https://odobgames.github.io/Portafolio/sitemap.xml

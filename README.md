@@ -4,7 +4,7 @@ Sitio de presentación profesional, pensado para reclutadores y equipos técnico
 Estático, bilingüe (ES/EN) y sin paso de compilación: lo que está en el repositorio
 es exactamente lo que se publica.
 
-**En vivo:** https://odobgames.github.io/Pruebaclaude/
+**En vivo:** https://odobgames.github.io/Portafolio/
 
 ---
 

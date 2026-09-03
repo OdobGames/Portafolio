@@ -187,8 +187,9 @@ window.I18N = {
     'contact.cv': 'Download CV',
     'contact.mail': 'Send me an email',
     'contact.github': 'github.com/OdobGames',
+    'contact.linkedin': 'LinkedIn',
     'contact.copied': 'Copied!',
-    'contact.note': 'GitHub works too. I reply to everything that comes in.',
+    'contact.note': 'LinkedIn and GitHub work too. I reply to everything that comes in.',
 
 
     /* -------------------------------------------------------- tech tags */
