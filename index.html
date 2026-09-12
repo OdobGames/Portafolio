@@ -77,13 +77,16 @@
         "MicroStrategy", "Machine learning", "Predictive modelling",
         "Large language models", "AI agents", "n8n", "Python",
         "Real-time graphics", "Voxel rendering", "Network protocols",
-        "Multiplayer game networking", "Game development"
+        "Multiplayer game networking", "Lag compensation", "Procedural generation",
+        "Game development"
       ],
       "sameAs": [
         "https://www.linkedin.com/in/oscarordonez13",
         "https://github.com/OdobGames",
         "https://webcraft-8p8.pages.dev/",
         "https://carritos-bty.pages.dev/",
+        "https://frente-de-papel.pages.dev/",
+        "https://backrooms-wanderer.pages.dev/",
         "https://odobgames.github.io/OdobGames"
       ],
       "seeks": { "@type": "Demand", "name": "Software engineering roles" }
@@ -94,7 +97,9 @@
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "item": { "@type": "SoftwareApplication", "name": "WebCraft", "applicationCategory": "GameApplication", "operatingSystem": "Web browser", "url": "https://webcraft-8p8.pages.dev/", "description": "A Minecraft client that runs in the browser and connects to Minecraft Java Edition servers, built on the author's own implementation.", "author": { "@id": "https://odobgames.github.io/Portafolio/#oscar" } } },
         { "@type": "ListItem", "position": 2, "item": { "@type": "SoftwareApplication", "name": "Carritos", "applicationCategory": "GameApplication", "operatingSystem": "Web browser", "url": "https://carritos-bty.pages.dev/", "description": "An online multiplayer voxel kart racing game playable in the browser.", "author": { "@id": "https://odobgames.github.io/Portafolio/#oscar" } } },
-        { "@type": "ListItem", "position": 3, "item": { "@type": "SoftwareSourceCode", "name": "Monitor DIAN", "codeRepository": "https://github.com/OdobGames/monitor-dian", "programmingLanguage": "Python", "description": "Headless Chromium watcher that emails an alert when appointment slots open, deployable to GitHub Actions or a systemd-managed VM.", "author": { "@id": "https://odobgames.github.io/Portafolio/#oscar" } } }
+        { "@type": "ListItem", "position": 3, "item": { "@type": "SoftwareApplication", "name": "Frente de Papel", "applicationCategory": "GameApplication", "operatingSystem": "Web browser", "url": "https://frente-de-papel.pages.dev/", "description": "An online multiplayer first-person shooter that runs in the browser, with a cut-paper, cartoon art direction.", "author": { "@id": "https://odobgames.github.io/Portafolio/#oscar" } } },
+        { "@type": "ListItem", "position": 4, "item": { "@type": "SoftwareApplication", "name": "Backrooms Wanderer", "applicationCategory": "GameApplication", "operatingSystem": "Web browser", "url": "https://backrooms-wanderer.pages.dev/", "description": "A first-person survival roguelike set in procedurally generated Backrooms levels, played online in the browser.", "author": { "@id": "https://odobgames.github.io/Portafolio/#oscar" } } },
+        { "@type": "ListItem", "position": 5, "item": { "@type": "SoftwareSourceCode", "name": "Monitor DIAN", "codeRepository": "https://github.com/OdobGames/monitor-dian", "programmingLanguage": "Python", "description": "Headless Chromium watcher that emails an alert when appointment slots open, deployable to GitHub Actions or a systemd-managed VM.", "author": { "@id": "https://odobgames.github.io/Portafolio/#oscar" } } }
       ]
     }
   ]
@@ -320,9 +325,9 @@
   <div class="shell">
     <header class="section-head" data-reveal>
       <p class="eyebrow" data-i18n="work.eyebrow">Trabajo destacado</p>
-      <h2 data-i18n="work.title">Dos cosas difíciles, en línea y jugables</h2>
+      <h2 data-i18n="work.title">Cuatro cosas difíciles, en línea y jugables</h2>
       <p data-i18n="work.intro">
-        Fuera del trabajo con datos construyo sistemas en tiempo real. Los dos corren en el
+        Fuera del trabajo con datos construyo sistemas en tiempo real. Los cuatro corren en el
         navegador, sin instalar nada, y se pueden abrir ahora mismo: no son ejercicios de
         curso, son sistemas completos que tuve que diseñar de punta a punta.
       </p>
@@ -484,13 +489,168 @@
         </div>
       </article>
 
+      <!-- Frente de Papel -->
+      <article class="project project--paper" data-reveal>
+        <div class="project-body">
+          <p class="project-status"><span class="dot" aria-hidden="true"></span><span data-i18n="work.live3">En vivo</span><span class="sep" aria-hidden="true">·</span><span class="scope" data-i18n="work.papel.scope">Proyecto propio, de punta a punta</span></p>
+          <h3>Frente de Papel</h3>
+          <p class="hook" data-i18n="work.papel.hook">Un shooter multijugador en primera persona donde el mundo entero está recortado en papel.</p>
+          <p class="body" data-i18n="work.papel.body">
+            Partidas en línea dentro de una pestaña del navegador. El escenario, las coberturas
+            y los jugadores tienen acabado de cartón recortado, y esa decisión no es solo
+            estética: un mundo hecho de formas planas es un mundo que carga en segundos y
+            corre en cualquier portátil.
+          </p>
+
+          <ol class="challenges">
+            <li>
+              <span class="num" aria-hidden="true">01</span>
+              <div>
+                <b data-i18n="work.papel.c1t">Primera persona, a la altura de los ojos</b>
+                <p data-i18n="work.papel.c1b">Una cámara en primera persona no perdona: el puntero se captura, la vista tiene que responder en el mismo cuadro en que se mueve el ratón y cualquier tirón se siente al instante.</p>
+              </div>
+            </li>
+            <li>
+              <span class="num" aria-hidden="true">02</span>
+              <div>
+                <b data-i18n="work.papel.c2t">Un disparo siempre ocurre en el pasado</b>
+                <p data-i18n="work.papel.c2b">Cada jugador ve el mundo con el retraso de su propia conexión. Para que un impacto sea justo hay que reconstruir dónde estaba todo en el instante en que se apretó el gatillo, no dónde está cuando llega el paquete.</p>
+              </div>
+            </li>
+            <li>
+              <span class="num" aria-hidden="true">03</span>
+              <div>
+                <b data-i18n="work.papel.c3t">Mover a todos, varias veces por segundo</b>
+                <p data-i18n="work.papel.c3b">La posición, la orientación y el estado de cada jugador viajan sin parar. Hay que recortar lo que se envía y rellenar por interpolación lo que no llega, para que el movimiento ajeno se vea continuo y no a saltos.</p>
+              </div>
+            </li>
+            <li>
+              <span class="num" aria-hidden="true">04</span>
+              <div>
+                <b data-i18n="work.papel.c4t">Que el papel se sostenga solo</b>
+                <p data-i18n="work.papel.c4b">El acabado de cartón se resuelve con geometría, siluetas y luz plana en vez de texturas pesadas: aquí la estética es también el presupuesto de rendimiento.</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="tags">
+            <span class="tag" data-i18n="tag.js">JavaScript</span>
+            <span class="tag" data-i18n="tag.web3d">3D en el navegador</span>
+            <span class="tag" data-i18n="tag.rtmp">Multijugador en tiempo real</span>
+            <span class="tag" data-i18n="tag.lagcomp">Compensación de latencia</span>
+            <span class="tag" data-i18n="tag.cfpages">Cloudflare Pages</span>
+          </div>
+
+          <div class="project-actions">
+            <a class="btn btn-primary btn-sm" href="https://frente-de-papel.pages.dev/" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+              <span data-i18n="work.papel.cta">Jugar Frente de Papel</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-media">
+          <div class="frame">
+            <div class="frame-bar" aria-hidden="true">
+              <i></i><i></i><i></i><span>frente-de-papel.pages.dev</span>
+            </div>
+            <canvas data-voxel="paper" data-seed="512"
+                    data-i18n-attr="aria-label:work.papel.canvas"
+                    role="img"
+                    data-i18n="work.papel.canvas"
+                    aria-label="Animación de una arena de papel recortado con jugadores de dos equipos moviéndose entre coberturas de cartón">Animación de una arena de papel recortado con jugadores de dos equipos moviéndose entre coberturas de cartón.</canvas>
+          </div>
+          <p class="media-note" data-i18n="work.papel.note">
+            Escena dibujada en esta página con el motor isométrico del sitio, en papel y cartón.
+            No es una captura de Frente de Papel — el juego real está a un clic.
+          </p>
+        </div>
+      </article>
+
+      <!-- Backrooms Wanderer -->
+      <article class="project project--alt project--amber" data-reveal>
+        <div class="project-body">
+          <p class="project-status"><span class="dot" aria-hidden="true"></span><span data-i18n="work.live4">En vivo</span><span class="sep" aria-hidden="true">·</span><span class="scope" data-i18n="work.backrooms.scope">Proyecto propio, de punta a punta</span></p>
+          <h3>Backrooms Wanderer</h3>
+          <p class="hook" data-i18n="work.backrooms.hook">Un roguelike de supervivencia en primera persona por pasillos amarillos que no terminan.</p>
+          <p class="body" data-i18n="work.backrooms.body">
+            Los niveles se generan solos y nunca son los mismos dos veces. Se entra por una
+            pestaña del navegador, se avanza mientras alcancen los recursos y, cuando la partida
+            se acaba, el siguiente intento empieza en un sitio que nadie ha visto antes.
+          </p>
+
+          <ol class="challenges">
+            <li>
+              <span class="num" aria-hidden="true">01</span>
+              <div>
+                <b data-i18n="work.backrooms.c1t">Un espacio que no se acaba</b>
+                <p data-i18n="work.backrooms.c1b">La generación procedural tiene que producir sitios que de verdad se puedan recorrer: sin salas selladas ni rutas que no llevan a ninguna parte. El azar decide la forma, pero alguien tiene que garantizar que siempre exista un camino.</p>
+              </div>
+            </li>
+            <li>
+              <span class="num" aria-hidden="true">02</span>
+              <div>
+                <b data-i18n="work.backrooms.c2t">Un nivel infinito no cabe en memoria</b>
+                <p data-i18n="work.backrooms.c2b">Si el mundo no termina, no puede existir entero a la vez. Hay que construirlo y desmontarlo alrededor del jugador mientras camina, y que la costura no se note nunca.</p>
+              </div>
+            </li>
+            <li>
+              <span class="num" aria-hidden="true">03</span>
+              <div>
+                <b data-i18n="work.backrooms.c3t">El miedo se construye con poco</b>
+                <p data-i18n="work.backrooms.c3b">La tensión sale de la luz, del sonido y del ritmo, no del detalle. En un lugar donde todo se parece a todo, lo difícil es que el jugador nunca sepa si ya estuvo ahí.</p>
+              </div>
+            </li>
+            <li>
+              <span class="num" aria-hidden="true">04</span>
+              <div>
+                <b data-i18n="work.backrooms.c4t">Una partida que se puede perder</b>
+                <p data-i18n="work.backrooms.c4b">Un roguelike necesita consecuencias: recursos que se agotan, una muerte que cuesta y un mundo distinto al volver a empezar. Sin eso, recorrer pasillos es solo recorrer pasillos.</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="tags">
+            <span class="tag" data-i18n="tag.web3d">3D en el navegador</span>
+            <span class="tag" data-i18n="tag.procgen">Generación procedural</span>
+            <span class="tag" data-i18n="tag.roguelike">Diseño roguelike</span>
+            <span class="tag" data-i18n="tag.fpv">Primera persona</span>
+            <span class="tag" data-i18n="tag.cfpages">Cloudflare Pages</span>
+          </div>
+
+          <div class="project-actions">
+            <a class="btn btn-primary btn-sm" href="https://backrooms-wanderer.pages.dev/" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+              <span data-i18n="work.backrooms.cta">Entrar a Backrooms Wanderer</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-media">
+          <div class="frame">
+            <div class="frame-bar" aria-hidden="true">
+              <i></i><i></i><i></i><span>backrooms-wanderer.pages.dev</span>
+            </div>
+            <canvas data-voxel="rooms" data-seed="308"
+                    data-i18n-attr="aria-label:work.backrooms.canvas"
+                    role="img"
+                    data-i18n="work.backrooms.canvas"
+                    aria-label="Animación de un laberinto de habitaciones amarillas con una figura que camina por los pasillos bajo luces que parpadean">Animación de un laberinto de habitaciones amarillas con una figura que camina por los pasillos bajo luces que parpadean.</canvas>
+          </div>
+          <p class="media-note" data-i18n="work.backrooms.note">
+            Laberinto generado y dibujado en esta misma página por el motor isométrico del sitio.
+            No es una captura de Backrooms Wanderer — para verlo en primera persona, abre el enlace.
+          </p>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
 
 <div class="shell">
   <aside class="mid-cta" data-reveal>
-    <p data-i18n="midcta.text">¿Te interesa cómo está construido alguno de los dos? Escríbeme y te lo cuento por dentro.</p>
+    <p data-i18n="midcta.text">¿Te interesa cómo está construido alguno de ellos? Escríbeme y te lo cuento por dentro.</p>
     <a class="btn btn-ghost btn-sm" href="#contacto">
       <span data-i18n="midcta.cta">Hablemos</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -699,6 +859,8 @@
       <a href="https://github.com/OdobGames" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="https://webcraft-8p8.pages.dev/" target="_blank" rel="noopener noreferrer">WebCraft</a>
       <a href="https://carritos-bty.pages.dev/" target="_blank" rel="noopener noreferrer">Carritos</a>
+      <a href="https://frente-de-papel.pages.dev/" target="_blank" rel="noopener noreferrer">Frente de Papel</a>
+      <a href="https://backrooms-wanderer.pages.dev/" target="_blank" rel="noopener noreferrer">Backrooms Wanderer</a>
       <a href="https://github.com/OdobGames/Portafolio" target="_blank" rel="noopener noreferrer" data-i18n="footer.source">Código de este sitio</a>
       <a href="mailto:13odob27@gmail.com" data-i18n="footer.mail">Correo</a>
     </nav>

@@ -14,7 +14,7 @@ es exactamente lo que se publica.
 | --- | --- |
 | Portada | Titular, disponibilidad, cuatro datos verificables y descarga del CV |
 | Experiencia | Claro Colombia (vía Grupo CINTE), Softgic, BBVA, OdobGames y la UNAL, con fechas reales |
-| Trabajo destacado | **WebCraft** y **Carritos**, con los retos de ingeniería de cada uno |
+| Trabajo destacado | **WebCraft**, **Carritos**, **Frente de Papel** y **Backrooms Wanderer**, con los retos de ingeniería de cada uno |
 | Otros proyectos | Monitor DIAN, los juegos de OdobGames en Google Play, Retro Arcade, Survival Tank y los repos del pregrado |
 | Habilidades | Seis grupos: gobierno de datos, nube y big data, ciencia de datos e IA, SQL/ETL, BI, e ingeniería de software |
 | Contacto | Correo, CV, GitHub y un botón para copiar la dirección |
@@ -48,12 +48,28 @@ Las dos listas de claves deben coincidir exactamente.
 
 ## Las escenas voxel
 
-Los recuadros de WebCraft y Carritos no son capturas: son escenas dibujadas en
-vivo por `assets/js/voxel.js`, un renderizador isométrico escrito para este sitio
-sin dependencias. La geometría estática se rasteriza una sola vez a un lienzo
-fuera de pantalla, así que cada cuadro cuesta un `drawImage` y unas pocas figuras
-en movimiento. Las escenas se detienen cuando salen de la pantalla o la pestaña
-pierde el foco, y con `prefers-reduced-motion` se dibuja un solo cuadro estático.
+Los recuadros de los cuatro proyectos destacados no son capturas: son escenas
+dibujadas en vivo por `assets/js/voxel.js`, un renderizador isométrico escrito
+para este sitio sin dependencias. La geometría estática se rasteriza una sola vez
+a un lienzo fuera de pantalla, así que cada cuadro cuesta un `drawImage` y unas
+pocas figuras en movimiento. Las escenas se detienen cuando salen de la pantalla
+o la pestaña pierde el foco, y con `prefers-reduced-motion` se dibuja un solo
+cuadro estático.
+
+Cada tarjeta elige su escena con `data-voxel`:
+
+| `data-voxel` | Qué dibuja |
+| --- | --- |
+| `world` | Una isla que se carga columna por columna, como chunks llegando de un servidor |
+| `karts` | Un circuito cerrado con karts dando una vuelta |
+| `paper` | Una arena de papel recortado con dos equipos moviéndose entre coberturas |
+| `rooms` | Habitaciones amarillas con puertas y una figura que las recorre sin rumbo |
+| `ambient` | La deriva lenta de cubos detrás de la portada |
+
+**Para añadir una escena** hacen falta dos piezas: una función que construya la
+lista de columnas y otra que sepa pintar una de ellas. `Scene.prototype.lay` las
+une, se encarga del encuadre y deja que `stream()` rasterice la placa; lo que se
+mueva encima va en `draw()`.
 
 **Para reemplazarlas por capturas reales**, cambia el `<canvas data-voxel="...">`
 de cada tarjeta por un `<img>` y borra el párrafo `.media-note` que aclara que es

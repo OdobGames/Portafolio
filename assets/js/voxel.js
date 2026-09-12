@@ -12,6 +12,8 @@
  *   'world'  — a terrain chunk that streams in column by column, back to front,
  *              the way a client receives chunks from a server.
  *   'karts'  — a closed circuit with voxel karts running a lap on it.
+ *   'paper'  — a cut-paper arena with two teams moving between cover.
+ *   'rooms'  — yellow rooms joined by doorways, with a figure wandering them.
  *   'ambient'— a slow drift of cubes used behind the hero copy.
  */
 (function (global) {
@@ -346,6 +348,254 @@
     ctx.restore();
   }
 
+  /* ----------------------------------------------------------- the figures */
+
+  // A person: a body block under a head block, drawn in their own projection so
+  // the figure is just under a tile wide and half again as tall as the walls it
+  // walks between — small enough to belong to the scene, large enough to read
+  // as somebody rather than as scenery. Both the paper troopers and the
+  // wanderer are this, with different colours.
+  function drawFigure(ctx, p, ox, oy, wx, wz, ground, body, head, bob) {
+    var sx = ox + p.x(wx, wz);
+    var sy = oy + p.y(wx, wz, ground) + bob;
+    // Body and head get their own projections: a single one makes two stacked
+    // cubes, and two cubes read as cargo rather than as somebody standing.
+    var qb = projector(p.halfW * 1.25);
+    var qh = projector(p.halfW * 0.95);
+    var shoulder = sy - qb.rise * 1.5;
+
+    // Contact shadow first, so the figure reads as standing on the floor.
+    ctx.save();
+    ctx.globalAlpha = 0.26;
+    ctx.fillStyle = '#05070b';
+    faceTop(ctx, qb, sx, sy + qb.rise * 0.12);
+    ctx.globalAlpha = 1;
+
+    prism(ctx, qb, sx, shoulder, 1.5, body, null);
+    prism(ctx, qh, sx, shoulder - qh.rise * 0.85, 0.85, head, null);
+    ctx.restore();
+  }
+
+  /* ------------------------------------------------------------ scene: paper */
+
+  var PAPER_PALETTE = {
+    sheet:     '#efe4cb',
+    sheetAlt:  '#e7d9bb',
+    kraft:     '#d5b489',
+    kraftDeep: '#bf9a6d',
+    crease:    '#c0a883',
+    red:       '#e0655a',
+    blue:      '#59aee0'
+  };
+
+  var TEAM_COLORS = [PAPER_PALETTE.red, PAPER_PALETTE.blue, PAPER_PALETTE.red, PAPER_PALETTE.blue];
+
+  function buildArena(size, seed) {
+    var noise = makeNoise(seed);
+    var tiles = [];
+    var walkable = [];
+    var height = [];
+
+    for (var x = 0; x < size; x++) {
+      for (var z = 0; z < size; z++) {
+        var edge = Math.min(x, z, size - 1 - x, size - 1 - z);
+        // Two spawns on opposite corners: this is a game with two sides, and
+        // the scene should say so before anyone reads a word of the copy.
+        var red = x > 0 && x < 3 && z > 0 && z < 3;
+        var blue = x > size - 4 && x < size - 1 && z > size - 4 && z < size - 1;
+
+        var h = 1;
+        var band = PAPER_PALETTE.crease;
+        var color = ((((x / 2) | 0) + ((z / 2) | 0)) % 2 === 0)
+          ? PAPER_PALETTE.sheetAlt
+          : PAPER_PALETTE.sheet;
+        if (red) color = PAPER_PALETTE.red;
+        if (blue) color = PAPER_PALETTE.blue;
+
+        // Cardboard cover, kept off both spawns and off the border so the
+        // arena keeps a walkable ring around the outside.
+        var cover = false;
+        if (!red && !blue && edge > 1 && noise(x / 2.6 + 5, z / 2.6 + 11) > 0.63) {
+          h = 2 + Math.round(noise(x * 2.1, z * 2.1) * 0.9);
+          color = h > 2 ? PAPER_PALETTE.kraftDeep : PAPER_PALETTE.kraft;
+          band = PAPER_PALETTE.kraftDeep;
+          cover = true;
+        }
+
+        walkable.push(!cover);
+        height.push(h);
+        tiles.push({ x: x, z: z, h: h, color: color, band: band, cover: cover });
+      }
+    }
+    tiles.sort(function (a, b) { return (a.x + a.z) - (b.x + b.z); });
+    return { tiles: tiles, walkable: walkable, height: height };
+  }
+
+  // Paper is cut, not moulded. Outlining the top face of every raised block
+  // is what separates a stack of cardboard from a stack of stone.
+  function drawPaperColumn(ctx, p, c, ox, oy) {
+    var sx = ox + p.x(c.x, c.z);
+    var sy = oy + p.y(c.x, c.z, c.h);
+    prism(ctx, p, sx, sy, c.h + 2, c.color, c.band);
+    if (!c.cover) return;
+    ctx.strokeStyle = shade(c.color, -0.36);
+    ctx.lineWidth = Math.max(1, p.halfW * 0.05);
+    ctx.beginPath();
+    ctx.moveTo(sx, sy);
+    ctx.lineTo(sx + p.halfW, sy + p.halfH);
+    ctx.lineTo(sx, sy + p.halfH * 2);
+    ctx.lineTo(sx - p.halfW, sy + p.halfH);
+    ctx.closePath();
+    ctx.stroke();
+  }
+
+  // A paper plane crossing the arena: the one thing on screen that is folded
+  // rather than stacked, and the quickest way to say what the game is made of.
+  function drawPlane(ctx, p, ox, oy, wx, wz, lift, heading) {
+    var gx = ox + p.x(wx, wz);
+    var gy = oy + p.y(wx, wz, 1);
+
+    ctx.save();
+    ctx.globalAlpha = 0.18;
+    ctx.fillStyle = '#05070b';
+    faceTop(ctx, projector(p.halfW * 0.8), gx, gy);
+    ctx.globalAlpha = 1;
+
+    var s = p.halfW * 1.05;
+    ctx.translate(gx, gy - lift * p.rise);
+    ctx.rotate(heading);
+    // Two triangles meeting at the fold: the near wing catches the light, the
+    // far one sits in its shadow.
+    ctx.fillStyle = PAPER_PALETTE.sheet;
+    ctx.beginPath();
+    ctx.moveTo(s * 1.6, 0);
+    ctx.lineTo(-s, s * 0.8);
+    ctx.lineTo(-s * 0.4, 0);
+    ctx.closePath();
+    ctx.fill();
+    ctx.fillStyle = shade(PAPER_PALETTE.sheet, -0.26);
+    ctx.beginPath();
+    ctx.moveTo(s * 1.6, 0);
+    ctx.lineTo(-s, -s * 0.8);
+    ctx.lineTo(-s * 0.4, 0);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+  }
+
+  // Somewhere open to walk to. Cover blocks are solid, so retry a few times
+  // before settling for wherever we landed.
+  function openSpot(noise, walkable, size, n) {
+    for (var i = 0; i < 8; i++) {
+      var x = 1 + Math.floor(noise(n * 2.7 + i * 13.1, 4.2) * (size - 2));
+      var z = 1 + Math.floor(noise(n * 2.7 + i * 13.1, 9.6) * (size - 2));
+      if (walkable[x * size + z]) return { x: x, z: z };
+    }
+    return { x: (size - 1) / 2, z: (size - 1) / 2 };
+  }
+
+  /* ------------------------------------------------------------ scene: rooms */
+
+  var ROOMS_PALETTE = {
+    wall:      '#cdb662',
+    wallAlt:   '#c2aa57',
+    wallDeep:  '#8d7a3c',
+    carpet:    '#a68f4a',
+    carpetAlt: '#9b8444',
+    base:      '#786636',
+    light:     '#f4e7ae'
+  };
+
+  function buildRooms(size, seed) {
+    // Straight wall runs on a coarse lattice, then a doorway punched into every
+    // span and the occasional span dropped outright so two rooms become a hall.
+    // Long walls with gaps in them is what makes a floor read as rooms: a maze
+    // carver gives corridors and scattered gaps give a field of pillars, and
+    // the Backrooms are neither.
+    var noise = makeNoise(seed);
+    var solid = [];
+    var lit = [];
+    var lamps = [];
+    var i, x, z;
+    for (i = 0; i < size * size; i++) { solid.push(false); lit.push(false); }
+    function at(a, b) { return a * size + b; }
+
+    // The outer wall, so the plate ends in a room rather than in mid-air.
+    for (i = 0; i < size; i++) {
+      solid[at(i, 0)] = true;
+      solid[at(i, size - 1)] = true;
+      solid[at(0, i)] = true;
+      solid[at(size - 1, i)] = true;
+    }
+
+    var step = 4;
+    for (x = step; x < size - 1; x += step) {
+      for (z = 1; z < size - 1; z++) solid[at(x, z)] = true;
+    }
+    for (z = step; z < size - 1; z += step) {
+      for (x = 1; x < size - 1; x++) solid[at(x, z)] = true;
+    }
+
+    // Opening every span guarantees the whole floor stays connected, without
+    // anyone having to go looking for a path afterwards.
+    function openSpan(vertical, line, from) {
+      var lo = from + 1;
+      var hi = Math.min(from + step - 1, size - 2);
+      if (lo > hi) return;
+      var s;
+      if (noise(line * 1.7 + 2, from * 1.7 + 3) > 0.76) {
+        for (s = lo; s <= hi; s++) solid[vertical ? at(line, s) : at(s, line)] = false;
+        return;
+      }
+      s = Math.min(hi, lo + Math.floor(noise(line * 2.9 + 7, from * 2.9) * (hi - lo + 1)));
+      solid[vertical ? at(line, s) : at(s, line)] = false;
+    }
+    for (x = step; x < size - 1; x += step) {
+      for (z = 0; z < size - 1; z += step) openSpan(true, x, z);
+    }
+    for (z = step; z < size - 1; z += step) {
+      for (x = 0; x < size - 1; x += step) openSpan(false, z, x);
+    }
+
+    // One light at the centre of every room. The ceiling grid is the only thing
+    // in this place that was ever laid out on purpose, so it should be the one
+    // thing on the floor that is evenly spaced.
+    var half = (step / 2) | 0;
+    for (x = 0; x < size - 1; x += step) {
+      for (z = 0; z < size - 1; z += step) {
+        var cx = Math.min(x + half, size - 2);
+        var cz = Math.min(z + half, size - 2);
+        if (solid[at(cx, cz)]) continue;
+        lit[at(cx, cz)] = true;
+        lamps.push({ x: cx, z: cz, phase: lamps.length * 1.7 });
+      }
+    }
+
+    var tiles = [];
+    var open = [];
+    for (x = 0; x < size; x++) {
+      for (z = 0; z < size; z++) {
+        var wall = solid[at(x, z)];
+        open.push(!wall);
+        tiles.push({
+          x: x, z: z,
+          // Walls stand one unit over the carpet: tall enough to read as rooms
+          // from this angle, low enough that what is behind them is still there
+          // to see.
+          h: wall ? 2 : 1,
+          color: wall
+            ? ((x + z) % 2 === 0 ? ROOMS_PALETTE.wall : ROOMS_PALETTE.wallAlt)
+            : (lit[at(x, z)]
+              ? ROOMS_PALETTE.light
+              : ((x + z) % 2 === 0 ? ROOMS_PALETTE.carpet : ROOMS_PALETTE.carpetAlt)),
+          band: wall ? ROOMS_PALETTE.wallDeep : ROOMS_PALETTE.base
+        });
+      }
+    }
+    tiles.sort(function (a, b) { return (a.x + a.z) - (b.x + b.z); });
+    return { tiles: tiles, open: open, lamps: lamps };
+  }
+
   /* ------------------------------------------------------------ the engine */
 
   var reduceMotion = global.matchMedia
@@ -391,31 +641,80 @@
     this.build();
   };
 
+  // Every grounded scene has the same shape: a plate of columns fitted to the
+  // canvas, plus the painter that knows how to draw one column of it. Keeping
+  // that in one place is what lets a new scene be a builder and a painter
+  // rather than another branch of everything below.
+  Scene.prototype.lay = function (list, painter) {
+    this.plate = list;
+    this.painter = painter;
+    var f = fit(list, this.w, this.h, 0.95);
+    this.p = projector(f.tile);
+    this.ox = f.ox;
+    this.oy = f.oy;
+    this.streamed = 0;
+    this.bufferCtx.clearRect(0, 0, this.w, this.h);
+  };
+
   Scene.prototype.build = function () {
     var w = this.w, h = this.h;
+    this.plate = null;
+    this.karts = null;
+    this.troopers = null;
+    this.wanderer = null;
+
     if (this.kind === 'world') {
       this.size = w < 420 ? 16 : 22;
-      this.columns = buildWorld(this.size, this.seed);
-      var wf = fit(this.columns, w, h, 0.95);
-      this.p = projector(wf.tile);
-      this.ox = wf.ox;
-      this.oy = wf.oy;
-      this.streamed = 0;
-      this.bufferCtx.clearRect(0, 0, w, h);
+      this.lay(buildWorld(this.size, this.seed), drawColumn);
+
     } else if (this.kind === 'karts') {
       this.size = w < 420 ? 14 : 18;
-      this.tiles = buildTrack(this.size);
-      var kf = fit(this.tiles, w, h, 0.95);
-      this.p = projector(kf.tile);
-      this.ox = kf.ox;
-      this.oy = kf.oy;
-      this.streamed = 0;
-      this.bufferCtx.clearRect(0, 0, w, h);
+      this.lay(buildTrack(this.size), drawColumn);
       this.karts = KART_COLORS.map(function (c, i) {
         // Spread them around the lap and give each a slightly different pace so
         // the pack keeps rearranging instead of orbiting in lockstep.
         return { color: c, t: i * 0.19, speed: 0.9 + i * 0.06 };
       });
+
+    } else if (this.kind === 'paper') {
+      this.size = w < 420 ? 13 : 17;
+      var arena = buildArena(this.size, this.seed);
+      this.lay(arena.tiles, drawPaperColumn);
+      this.walkable = arena.walkable;
+      this.ground = arena.height;
+      this.spots = makeNoise(this.seed + 17);
+      var spots = this.spots, walk = this.walkable, asize = this.size;
+      this.troopers = TEAM_COLORS.map(function (c, i) {
+        var home = openSpot(spots, walk, asize, i);
+        var away = openSpot(spots, walk, asize, i + 40);
+        return {
+          color: c, step: i + 40, speed: 1.5 + i * 0.22,
+          x: home.x, z: home.z, tx: away.x, tz: away.z
+        };
+      });
+      this.plane = { t: 0.35 };
+
+    } else if (this.kind === 'rooms') {
+      // One more than a whole number of rooms, so the lattice lands a wall on
+      // the far border instead of clipping the last room in half.
+      this.size = w < 420 ? 13 : 21;
+      var rooms = buildRooms(this.size, this.seed);
+      this.lay(rooms.tiles, drawColumn);
+      this.open = rooms.open;
+      this.lamps = rooms.lamps;
+      this.roomNoise = makeNoise(this.seed + 991);
+      // Start the walk as close to the middle as an open tile allows, so the
+      // figure is somewhere near the centre of the frame when the scene lands.
+      var mid = (this.size - 1) / 2, best = Infinity, sx = 1, sz = 1;
+      for (var rx = 1; rx < this.size - 1; rx++) {
+        for (var rz = 1; rz < this.size - 1; rz++) {
+          if (!rooms.open[rx * this.size + rz]) continue;
+          var d = Math.abs(rx - mid) + Math.abs(rz - mid);
+          if (d < best) { best = d; sx = rx; sz = rz; }
+        }
+      }
+      this.wanderer = { px: sx, pz: sz, cx: sx, cz: sz, nx: sx, nz: sz, u: 1, step: 0 };
+
     } else {
       this.p = projector(Math.max(18, Math.min(w, h) / 12));
       this.motes = [];
@@ -434,10 +733,10 @@
     }
   };
 
-  // Terrain and track are painted into the buffer once, incrementally, so the
-  // per-frame cost stays at one blit plus the moving parts.
+  // The plate is painted into the buffer once, incrementally, so the per-frame
+  // cost stays at one blit plus whatever is moving on top of it.
   Scene.prototype.stream = function (dt) {
-    var list = this.kind === 'world' ? this.columns : this.tiles;
+    var list = this.plate;
     if (!list) return;
     if (this.streamed >= list.length) return;
     var perSecond = list.length / 1.6;
@@ -446,8 +745,7 @@
       : Math.min(list.length, this.streamed + perSecond * dt);
     var ctx = this.bufferCtx;
     for (var i = Math.floor(this.streamed); i < Math.floor(target); i++) {
-      var item = list[i];
-      drawColumn(ctx, this.p, item, this.ox, this.oy);
+      this.painter(ctx, this.p, list[i], this.ox, this.oy);
     }
     this.streamed = target;
   };
@@ -472,7 +770,7 @@
     this.stream(dt);
     ctx.drawImage(this.buffer, 0, 0, this.buffer.width, this.buffer.height, 0, 0, w, h);
 
-    var done = this.streamed >= (this.kind === 'world' ? this.columns.length : this.tiles.length);
+    var done = this.streamed >= this.plate.length;
 
     if (this.kind === 'world' && done) {
       // Packets travelling toward the chunk: a nod to a client pulling world
@@ -502,6 +800,121 @@
         drawKart(ctx, this.p, this.ox, this.oy, pt.x, pt.z, kart.color, bob);
       }
     }
+
+    if (this.kind === 'paper' && done) {
+      var pp = this.p;
+      var team = this.troopers.slice().sort(function (a, b) {
+        return (a.x + a.z) - (b.x + b.z);
+      });
+      for (var ti = 0; ti < team.length; ti++) {
+        var tr = team[ti];
+        // A path between two open spots can still cross a block of cover, so
+        // read the ground height underneath: the trooper climbs it instead of
+        // walking through it.
+        var gx = Math.min(this.size - 1, Math.max(0, Math.round(tr.x)));
+        var gz = Math.min(this.size - 1, Math.max(0, Math.round(tr.z)));
+        drawFigure(ctx, pp, this.ox, this.oy, tr.x, tr.z, this.ground[gx * this.size + gz],
+          tr.color, lightenHex(tr.color, 0.62),
+          Math.sin(this.t * 8 + ti) * pp.rise * 0.05);
+      }
+      // A plane thrown corner to corner, with a pause at the end of the loop
+      // so it reads as something someone threw rather than a looping belt.
+      if (this.plane.t < 0.72) {
+        // Along the diagonal where x rises as z falls: on screen that is a flat
+        // left-to-right crossing, which is the one heading a folded plane reads
+        // at from this angle.
+        var u = this.plane.t / 0.72;
+        var lo = 2, hi = this.size - 3;
+        drawPlane(ctx, pp, this.ox, this.oy,
+          lo + (hi - lo) * u, hi + (lo - hi) * u,
+          1.2 + Math.sin(u * Math.PI) * 1.8, Math.sin(this.t * 2) * 0.08);
+      }
+    }
+
+    if (this.kind === 'rooms' && done) {
+      var rp = this.p;
+      // Fluorescent tubes that never quite settle. A slow pulse with a fast
+      // stutter over it is most of what makes a corridor uneasy.
+      ctx.fillStyle = ROOMS_PALETTE.light;
+      for (var li = 0; li < this.lamps.length; li++) {
+        var lamp = this.lamps[li];
+        var pulse = (0.5 + 0.5 * Math.sin(this.t * 2.1 + lamp.phase))
+          * (0.6 + 0.4 * Math.sin(this.t * 11 + lamp.phase * 3));
+        ctx.globalAlpha = 0.1 + pulse * 0.26;
+        faceTop(ctx, rp, this.ox + rp.x(lamp.x, lamp.z), this.oy + rp.y(lamp.x, lamp.z, 1));
+      }
+
+      var wd = this.wanderer;
+      var wx = wd.cx + (wd.nx - wd.cx) * wd.u;
+      var wz = wd.cz + (wd.nz - wd.cz) * wd.u;
+
+      // The pool of light the wanderer carries: the open tiles around it, then
+      // a brighter diamond underfoot. It is also what keeps the figure findable
+      // on the frames where a wall stands between it and the camera.
+      var halo = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+      ctx.globalAlpha = 0.12;
+      for (var hi = 0; hi < halo.length; hi++) {
+        var hx = wd.cx + halo[hi][0], hz = wd.cz + halo[hi][1];
+        if (hx < 0 || hz < 0 || hx >= this.size || hz >= this.size) continue;
+        if (!this.open[hx * this.size + hz]) continue;
+        faceTop(ctx, rp, this.ox + rp.x(hx, hz), this.oy + rp.y(hx, hz, 1));
+      }
+      ctx.globalAlpha = 0.3;
+      faceTop(ctx, rp, this.ox + rp.x(wx, wz), this.oy + rp.y(wx, wz, 1));
+      ctx.globalAlpha = 1;
+
+      drawFigure(ctx, rp, this.ox, this.oy, wx, wz, 1,
+        '#332f26', ROOMS_PALETTE.light, Math.sin(this.t * 7) * rp.rise * 0.03);
+    }
+  };
+
+  // Troopers cross the arena between open spots and choose a new one on
+  // arrival. It is not AI and does not pretend to be: it is the smallest thing
+  // that shows two teams using the same ground.
+  Scene.prototype.advanceTroopers = function (dt) {
+    for (var i = 0; i < this.troopers.length; i++) {
+      var t = this.troopers[i];
+      var dx = t.tx - t.x, dz = t.tz - t.z;
+      var d = Math.sqrt(dx * dx + dz * dz);
+      if (d < 0.12) {
+        t.step += 7;
+        var next = openSpot(this.spots, this.walkable, this.size, t.step);
+        t.tx = next.x;
+        t.tz = next.z;
+        continue;
+      }
+      var v = Math.min(t.speed * dt, d);
+      t.x += (dx / d) * v;
+      t.z += (dz / d) * v;
+    }
+  };
+
+  // The walk: from the tile it stands on, step to an open neighbour, avoiding
+  // the one it just left unless there is nowhere else to go. No pathfinding and
+  // no destination — which is the whole idea.
+  Scene.prototype.advanceWanderer = function (dt) {
+    var w = this.wanderer;
+    var dirs = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+    w.u += dt * 1.6;
+    while (w.u >= 1) {
+      w.u -= 1;
+      w.px = w.cx; w.pz = w.cz;
+      w.cx = w.nx; w.cz = w.nz;
+      var options = [];
+      for (var i = 0; i < 4; i++) {
+        var nx = w.cx + dirs[i][0], nz = w.cz + dirs[i][1];
+        if (nx < 0 || nz < 0 || nx >= this.size || nz >= this.size) continue;
+        if (!this.open[nx * this.size + nz]) continue;
+        if (nx === w.px && nz === w.pz) continue;
+        options.push([nx, nz]);
+      }
+      if (!options.length) options.push([w.px, w.pz]);
+      var k = Math.floor(this.roomNoise(w.cx * 2.3 + w.step, w.cz * 2.3) * options.length);
+      var pick = options[Math.min(Math.max(k, 0), options.length - 1)];
+      w.nx = pick[0];
+      w.nz = pick[1];
+      w.step++;
+    }
   };
 
   Scene.prototype.tick = function (now) {
@@ -509,11 +922,18 @@
     var dt = this.last ? Math.min((now - this.last) / 1000, 0.05) : 0.016;
     this.last = now;
     this.t += dt;
-    if (this.karts && !reduceMotion.matches) {
-      for (var i = 0; i < this.karts.length; i++) {
-        var k = this.karts[i];
-        k.t = (k.t + k.speed * dt * 0.075) % 1;
+    if (!reduceMotion.matches) {
+      if (this.karts) {
+        for (var i = 0; i < this.karts.length; i++) {
+          var k = this.karts[i];
+          k.t = (k.t + k.speed * dt * 0.075) % 1;
+        }
       }
+      if (this.troopers) {
+        this.advanceTroopers(dt);
+        this.plane.t = (this.plane.t + dt * 0.15) % 1;
+      }
+      if (this.wanderer) this.advanceWanderer(dt);
     }
     this.draw(dt);
     this.frame = global.requestAnimationFrame(this.tick.bind(this));
