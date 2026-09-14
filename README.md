@@ -82,8 +82,9 @@ edita desde GitHub sin reconstruir nada:
 
 ```
 assets/cv/CV-Oscar-Ordonez.tex      fuente en español
-assets/cv/CV-Oscar-Ordonez.pdf      compilado, es el que se descarga hoy
+assets/cv/CV-Oscar-Ordonez.pdf      compilado en español
 assets/cv/CV-Oscar-Ordonez-EN.tex   fuente en inglés
+assets/cv/CV-Oscar-Ordonez-EN.pdf   compilado en inglés
 ```
 
 Edita el `.tex`, compílalo con **pdfLaTeX** (en Overleaf: *Menu → Compiler →
@@ -95,19 +96,17 @@ una, tócalo igual en la otra o dejarán de verse como el mismo documento.
 
 ### El CV en inglés
 
-Los botones de descarga cambian de archivo con el idioma de la página. Lo hacen
-a través de una sola clave, `cv.file` en `assets/js/i18n.js`, leída por el
-atributo `data-i18n-attr="href:cv.file"` de los tres enlaces.
+Los tres botones de descarga cambian de archivo con el idioma de la página. Lo
+hacen a través de una sola clave, `cv.file` en `assets/js/i18n.js`, leída por el
+atributo `data-i18n-attr="href:cv.file"` de cada enlace: al pasar a inglés se
+reescribe el `href`, y al volver a español se restaura el original del HTML. No
+hay JavaScript propio detrás de esto.
 
-Esa clave **todavía apunta al PDF en español**, porque `CV-Oscar-Ordonez-EN.tex`
-está escrito pero nadie lo ha compilado: apuntar a un archivo que no está en el
-repositorio convertiría cada botón en un 404 para quien lea la página en inglés.
-Para terminarlo:
+**Para cambiar a qué archivo apunta la versión en inglés** basta con esa línea:
 
-1. Compila `assets/cv/CV-Oscar-Ordonez-EN.tex` con pdfLaTeX.
-2. Sube el resultado como `assets/cv/CV-Oscar-Ordonez-EN.pdf`.
-3. Cambia esa única línea en `assets/js/i18n.js`:
-   `'cv.file': 'assets/cv/CV-Oscar-Ordonez-EN.pdf',`
+```js
+'cv.file': 'assets/cv/CV-Oscar-Ordonez-EN.pdf',
+```
 
 Si cambias de experiencia laboral hay que tocar cuatro sitios y deben coincidir:
 la sección `#experiencia` de `index.html`, sus claves `exp.*` en

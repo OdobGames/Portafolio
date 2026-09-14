@@ -199,12 +199,10 @@ window.I18N = {
     'exp.cv': 'Would you rather have the full document?',
     'exp.cvlink': 'Download the CV as PDF',
 
-    /* The three download buttons follow the language through this one key.
-       It still points at the Spanish PDF: assets/cv/CV-Oscar-Ordonez-EN.tex is
-       written but nobody has compiled it yet, and pointing at a file that is
-       not in the repo would turn every download button into a 404 for English
-       visitors. Swap the filename here the moment the English PDF lands. */
-    'cv.file': 'assets/cv/CV-Oscar-Ordonez.pdf',
+    /* The three download buttons follow the language through this one key:
+       the <a> tags carry data-i18n-attr="href:cv.file", so switching to EN
+       rewrites their href and switching back restores the Spanish original. */
+    'cv.file': 'assets/cv/CV-Oscar-Ordonez-EN.pdf',
 
     /* -------------------------------------------------------- data tags */
     'tag.dg': 'Data Governance',
