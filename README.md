@@ -29,7 +29,7 @@ assets/js/voxel.js    Motor isométrico voxel propio (sin librerías).
 assets/js/i18n.js     Diccionario en inglés.
 assets/js/main.js     Idioma, navegación, scroll y utilidades.
 assets/img/og.png     Imagen de previsualización al compartir el enlace.
-assets/cv/            CV en PDF, enlazado desde la portada y desde Contacto.
+assets/cv/            CV en PDF y su fuente LaTeX, en español y en inglés.
 tools/og.html         Plantilla para regenerar assets/img/og.png.
 .github/workflows/    Despliegue automático a GitHub Pages.
 ```
@@ -77,10 +77,41 @@ una ilustración.
 
 ## Actualizar el CV
 
-Reemplaza `assets/cv/CV-Oscar-Ordonez.pdf` conservando el nombre y los enlaces
-siguen funcionando. Si cambias de experiencia laboral, la sección `#experiencia`
-de `index.html` y sus claves `exp.*` en `assets/js/i18n.js` son lo único que hay
-que tocar.
+El PDF se compila desde LaTeX y **la fuente vive en el repositorio**, así que se
+edita desde GitHub sin reconstruir nada:
+
+```
+assets/cv/CV-Oscar-Ordonez.tex      fuente en español
+assets/cv/CV-Oscar-Ordonez.pdf      compilado, es el que se descarga hoy
+assets/cv/CV-Oscar-Ordonez-EN.tex   fuente en inglés
+```
+
+Edita el `.tex`, compílalo con **pdfLaTeX** (en Overleaf: *Menu → Compiler →
+pdfLaTeX*) y sube el PDF resultante con el mismo nombre; los tres botones de
+descarga —portada, experiencia y contacto— siguen funcionando.
+
+Las dos versiones comparten márgenes, colores y tamaños: si tocas el formato de
+una, tócalo igual en la otra o dejarán de verse como el mismo documento.
+
+### El CV en inglés
+
+Los botones de descarga cambian de archivo con el idioma de la página. Lo hacen
+a través de una sola clave, `cv.file` en `assets/js/i18n.js`, leída por el
+atributo `data-i18n-attr="href:cv.file"` de los tres enlaces.
+
+Esa clave **todavía apunta al PDF en español**, porque `CV-Oscar-Ordonez-EN.tex`
+está escrito pero nadie lo ha compilado: apuntar a un archivo que no está en el
+repositorio convertiría cada botón en un 404 para quien lea la página en inglés.
+Para terminarlo:
+
+1. Compila `assets/cv/CV-Oscar-Ordonez-EN.tex` con pdfLaTeX.
+2. Sube el resultado como `assets/cv/CV-Oscar-Ordonez-EN.pdf`.
+3. Cambia esa única línea en `assets/js/i18n.js`:
+   `'cv.file': 'assets/cv/CV-Oscar-Ordonez-EN.pdf',`
+
+Si cambias de experiencia laboral hay que tocar cuatro sitios y deben coincidir:
+la sección `#experiencia` de `index.html`, sus claves `exp.*` en
+`assets/js/i18n.js`, y los dos `.tex`.
 
 ## Correr el sitio en local
 

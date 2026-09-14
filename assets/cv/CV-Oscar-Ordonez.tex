@@ -1,0 +1,273 @@
+%==============================================================================
+%  CV — Oscar Ordóñez
+%
+%  Réplica del formato original (Word/Calibri) medida directamente del PDF:
+%    · Papel Letter, márgenes 0.75 in izq. / 0.72 in der.
+%    · Calibri 20 / 11.5 / 10.6 / 10 / 9.5 / 9 pt
+%    · Azul oscuro #1F3864, azul medio #2E5496, gris #595959
+%    · Regla de 0.7 pt bajo cada encabezado de sección
+%
+%  Cambios frente al original: los enlaces ahora son hipervínculos reales
+%  (LinkedIn, GitHub, portafolio, OdobGames, correo y teléfono) y se añadió
+%  el sitio nuevo https://odobgames.github.io/Portafolio/
+%
+%  La etapa en BBVA aparecía como un solo cargo de Septiembre 2024 a Enero
+%  2026. Los primeros seis meses fueron la práctica profesional en el área de
+%  Rentabilidad, así que ahora son dos entradas separadas:
+%    · Practicante · Rentabilidad          Septiembre 2024 -- Febrero 2025
+%    · Data Analyst Specialist · BI        Marzo 2025      -- Enero 2026
+%
+%  Se quitó el \newpage manual que forzaba el salto de página: con una entrada
+%  más el corte ya no caía donde debía. Revisa dónde parte ahora la página y,
+%  si quieres fijarlo, vuelve a poner \newpage donde te convenga.
+%
+%  Compilar con pdfLaTeX. En Overleaf: Menu -> Compiler -> pdfLaTeX.
+%==============================================================================
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Carlito es métricamente compatible con Calibri: mismo ancho, mismo aspecto,
+% y sí está disponible en Overleaf (Calibri no lo está, es de Microsoft).
+\usepackage[sfdefault]{carlito}
+
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage[letterpaper,top=0.83in,bottom=0.65in,left=0.75in,right=0.72in]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{needspace}
+\usepackage[hidelinks]{hyperref}
+
+%------------------------------------------------------------------ colores --
+\definecolor{cvdark}{RGB}{31,56,100}   % #1F3864  nombre y cargos
+\definecolor{cvblue}{RGB}{46,84,150}   % #2E5496  subtítulo, secciones, reglas
+\definecolor{cvgray}{RGB}{89,89,89}    % #595959  contacto, fechas, empresa
+
+% Los enlaces conservan el gris del original para no alterar el aspecto.
+% ¿Los quieres visibles en azul? Cambia cvgray por cvblue en urlcolor.
+\hypersetup{
+  colorlinks=true, urlcolor=cvgray, linkcolor=cvgray,
+  pdftitle={CV — Oscar Ordóñez},
+  pdfauthor={Oscar Ordóñez},
+  pdfsubject={Ingeniero de Gobierno de Datos · Científico de Datos · Ingeniero de IA}
+}
+
+%--------------------------------------------------------------- tipografía --
+\newcommand{\sizeName}   {\fontsize{20}{23}\selectfont}
+\newcommand{\sizeTitle}  {\fontsize{10.6}{12.7}\selectfont}
+\newcommand{\sizeContact}{\fontsize{9}{11}\selectfont}
+\newcommand{\sizeSection}{\fontsize{11.5}{13.8}\selectfont}
+\newcommand{\sizeBody}   {\fontsize{10}{12.2}\selectfont}
+\newcommand{\sizeWhere}  {\fontsize{9.5}{11.4}\selectfont}
+\newcommand{\sizeSkill}  {\fontsize{9.5}{11.6}\selectfont}
+
+\newcommand{\md}{\,\textperiodcentered\,}                  % separador ·
+\newcommand{\sepdot}{\hspace{4pt}\textbullet\hspace{4pt}}   % separador •
+
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+% Word no divide palabras con guion: justifica estirando los espacios. Estas
+% líneas reproducen ese comportamiento y evitan cortes como "Data Wa-".
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\tolerance=9999
+\emergencystretch=3em
+
+%--------------------------------------------------------------- estructura --
+% Encabezado de sección: versalitas azules + regla de 0.7 pt a todo lo ancho.
+\newcommand{\cvsection}[1]{%
+  \needspace{3\baselineskip}%
+  \vspace{13pt}%
+  {\color{cvblue}\sizeSection\bfseries #1}\par
+  \vspace{2pt}%
+  {\color{cvblue}\rule{\textwidth}{0.7pt}}\par
+  \vspace{-6pt}%
+}
+
+% Cargo a la izquierda, fechas alineadas a la derecha, en la misma línea.
+\newcommand{\cvrole}[2]{%
+  \needspace{3\baselineskip}%
+  {\color{cvdark}\sizeTitle\bfseries #1}%
+  \hfill{\color{cvgray}\sizeContact #2}\par
+  \vspace{1pt}%
+}
+
+% Empresa y ubicación, en cursiva gris.
+\newcommand{\cvwhere}[1]{%
+  {\color{cvgray}\sizeWhere\itshape #1}\par
+  \vspace{3pt}%
+}
+
+% Viñetas: marca a 8 pt del margen, texto a 18 pt (medido del original).
+\setlist[itemize]{
+  leftmargin=18pt, labelwidth=10pt, labelsep=0pt, align=left,
+  topsep=1pt, itemsep=3pt, parsep=0pt, partopsep=0pt,
+  label=\textbullet, before=\raggedright
+}
+
+% Línea de habilidades: categoría en negrita azul, contenido en negro.
+\newcommand{\cvskill}[2]{%
+  {\raggedright\sizeSkill{\color{cvdark}\bfseries #1:} #2\par}%
+  \vspace{3pt}%
+}
+
+%==============================================================================
+\begin{document}
+\sizeBody
+
+%--------------------------------------------------------------- encabezado --
+{\centering
+  {\color{cvdark}\sizeName\bfseries OSCAR ORDÓÑEZ}\\[3pt]
+  {\color{cvblue}\sizeTitle Ingeniero de Gobierno de Datos\md Científico de Datos\md Ingeniero de IA}\\[1pt]
+  {\color{cvgray}\sizeContact
+    Bogotá, Colombia\sepdot
+    \href{tel:+573227596832}{+57 322 759 6832}\sepdot
+    \href{mailto:oordonezb@unal.edu.co}{oordonezb@unal.edu.co}}\\[0pt]
+  {\color{cvgray}\sizeContact
+    \href{https://www.linkedin.com/in/oscarordonez13}{LinkedIn}\sepdot
+    \href{https://github.com/OdobGames}{GitHub}\sepdot
+    \href{https://odobgames.github.io/Portafolio/}{Portafolio}\sepdot
+    \href{https://odobgames.github.io/OdobGames}{OdobGames}}\par}
+\vspace{0pt}
+
+%---------------------------------------------------------------- perfil -----
+\cvsection{PERFIL PROFESIONAL}
+
+Científico de la Computación de la Universidad Nacional de Colombia,
+especializado en Gobierno de Datos, ingeniería de datos en la nube (Databricks,
+AWS) e Inteligencia Artificial aplicada, con experiencia en los sectores Telco
+(Claro Colombia) y FinTech (BBVA). Enfocado en el gobierno del ciclo de vida del
+dato y la auditoría de uso de activos de información en ecosistemas de gran
+escala, alineado con los marcos DAMA-DMBOK2, DCAM v2.2 e ISO 25012. Experto en
+Python, SQL, PySpark, en plataformas Databricks (Unity Catalog, Delta Lake) y
+Teradata, y en la integración de LLMs para la automatización de procesos de
+datos. Inglés avanzado (C1) y experiencia bajo metodologías ágiles (Scrum).
+
+%------------------------------------------------------------ experiencia ---
+\cvsection{EXPERIENCIA PROFESIONAL}
+
+\cvrole{Ingeniero de Gobierno de Datos}{Abril 2026 -- Presente}
+\cvwhere{Grupo CINTE --- en misión en Claro Colombia\md Bogotá}
+\begin{itemize}
+  \item \textbf{Gobierno del ciclo de vida del dato:} Implementación de prácticas
+        de Data Governance sobre un ecosistema de Data Warehouse multiplataforma,
+        asegurando la trazabilidad, calidad y estandarización de los activos de
+        información a lo largo de su ciclo de vida.
+  \item \textbf{Auditoría de uso de activos:} Diseño y desarrollo de soluciones
+        analíticas en Python para la auditoría de uso del inventario de datos y
+        la identificación de objetos redundantes, como insumo para las políticas
+        corporativas de depuración y optimización.
+  \item \textbf{Catalogación con IA:} Aplicación de LLMs y técnicas de muestreo
+        estadístico para automatizar la catalogación, clasificación y
+        enriquecimiento semántico de metadatos a gran escala.
+  \item \textbf{Políticas y estándares de gobierno:} Definición de políticas de
+        uso, acceso e incidentes para entornos analíticos en Databricks (Unity
+        Catalog), alineadas con DAMA-DMBOK2, DCAM v2.2 e ISO 25012, bajo
+        metodología Scrum.
+\end{itemize}
+\vspace{7pt}
+
+\cvrole{Desarrollador de Inteligencia Artificial (Contratista)}{Enero 2026 -- Febrero 2026}
+\cvwhere{Softgic\md Colombia}
+\begin{itemize}
+  \item \textbf{Desarrollo de agente de IA:} Construcción de un agente de
+        Inteligencia Artificial end-to-end, integrando LLMs con flujos de
+        automatización para resolver casos de uso de negocio.
+  \item \textbf{Workflows en n8n:} Diseño, codificación y orquestación de
+        workflows complejos en n8n, integrando APIs, fuentes de datos y servicios
+        de IA para automatizar procesos críticos.
+  \item \textbf{SQL y modelado de datos:} Desarrollo intensivo en SQL para
+        extracción, transformación y análisis de datos como soporte al
+        comportamiento del agente.
+  \item \textbf{Metodologías ágiles:} Entregas iterativas bajo marcos Scrum, con
+        ciclos cortos de validación y despliegue.
+\end{itemize}
+\vspace{7pt}
+
+\cvrole{Data Analyst Specialist\md Business Intelligence --- Client Solutions}{Marzo 2025 -- Enero 2026}
+\cvwhere{BBVA Colombia\md Bogotá}
+\begin{itemize}
+  \item \textbf{Arquitectura de modelo de rentabilidad (P\&L):} Diseño e
+        implementación del modelo de rentabilidad de la unidad adquirente sobre
+        el ecosistema AWS (SageMaker, Athena, S3), procesando grandes volúmenes
+        de datos transaccionales.
+  \item \textbf{Pipelines ETL/ELT:} Desarrollo de pipelines de datos automatizados
+        con PySpark y SQL avanzado para optimizar la ingesta, transformación y
+        disponibilidad de información para las áreas de negocio.
+  \item \textbf{Business Intelligence y visualización:} Diseño de dashboards
+        estratégicos en MicroStrategy y Google Sheets (Apps Script) para el
+        seguimiento de los KPIs clave del negocio adquirente.
+  \item \textbf{Modelado predictivo:} Construcción de modelos predictivos con
+        Python (Pandas, Scikit-learn) para soporte a la toma de decisiones
+        financieras y comerciales.
+  \item \textbf{IA Generativa:} Investigación e integración de LLMs y APIs de IA
+        Generativa para apoyar el análisis avanzado y la generación automatizada
+        de reportes ejecutivos.
+\end{itemize}
+\vspace{7pt}
+
+\cvrole{Practicante\md Rentabilidad --- Client Solutions}{Septiembre 2024 -- Febrero 2025}
+\cvwhere{BBVA Colombia\md Bogotá}
+\begin{itemize}
+  \item \textbf{Automatización de procesos operativos:} Desarrollo de rutinas de
+        automatización para las tareas operativas recurrentes del área de
+        Rentabilidad, sustituyendo procedimientos que hasta entonces se
+        ejecutaban de forma manual.
+  \item \textbf{Soporte a la operación de banca minorista:} Apoyo a la operación
+        diaria del negocio de banca minorista dentro de la unidad de Client
+        Solutions.
+\end{itemize}
+\vspace{7pt}
+
+\cvrole{Desarrollador de Software, IA \& Videojuegos (Indie)}{Enero 2023 -- Presente}
+\cvwhere{OdobGames\md Proyecto personal}
+\begin{itemize}
+  \item \textbf{Desarrollo orientado a datos:} Aplicación de IA y analítica para
+        mejorar productos digitales y optimizar la experiencia de usuario.
+  \item \textbf{Full-Stack Mobile \& Game Development:} Desarrollo móvil con Unity
+        (C\#) y prototipado en Unreal Engine (UEFN), gestionando el ciclo de vida
+        completo: programación, build y publicación en tiendas.
+  \item \textbf{Automatización \& APIs:} Implementación de flujos en n8n e
+        integración de APIs para la optimización de procesos internos del estudio.
+\end{itemize}
+
+%-------------------------------------------------------------- educación ---
+\cvsection{EDUCACIÓN}
+
+\cvrole{Ciencias de la Computación (B.S.)}{2019 -- 2025}
+\cvwhere{Universidad Nacional de Colombia\md Bogotá, Colombia}
+
+%------------------------------------------------------------- habilidades --
+\cvsection{HABILIDADES TÉCNICAS}
+
+\cvskill{Gobierno de Datos}{Data Governance, Data Catalog, Data Quality, Metadata
+  Management, Data Lineage, Master Data Management, DAMA-DMBOK2, DCAM v2.2,
+  ISO 25012.}
+
+\cvskill{Cloud \& Big Data}{Databricks (Unity Catalog, Delta Lake, Spark), AWS
+  (SageMaker, Athena, S3), Teradata, PySpark, Apache Spark, Data Warehouse.}
+
+\cvskill{Ciencia de Datos \& IA}{Python (Pandas, NumPy, Scikit-learn), Modelado
+  Predictivo, Machine Learning, LLMs, GenAI, Prompt Engineering, Integración de
+  APIs de IA.}
+
+\cvskill{Bases de Datos \& ETL}{SQL avanzado, Modelado de Datos, ETL/ELT,
+  Optimización de Queries, Data Profiling, Procesamiento Distribuido.}
+
+\cvskill{Business Intelligence}{MicroStrategy, Google Sheets (Apps Script),
+  Visualización de Datos, KPIs, Dashboards Ejecutivos.}
+
+\cvskill{Automatización \& Agentes IA}{n8n, Workflows Orchestration, AI Agents,
+  Integración de APIs.}
+
+\cvskill{Desarrollo de Software}{Python, C\# (Unity), Unreal Engine (UEFN), Git,
+  GitHub, Azure DevOps.}
+
+\cvskill{Metodologías}{Scrum, Agile, Trabajo Colaborativo en Equipos
+  Multidisciplinarios.}
+
+\cvskill{Idiomas}{Español (Nativo) \textbar{} Inglés Avanzado (C1).}
+
+\end{document}
