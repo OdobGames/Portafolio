@@ -184,13 +184,17 @@ window.I18N = {
     'exp.3w': 'BBVA Colombia · Client Solutions · Bogotá',
     'exp.3b': 'Designed and implemented the acquiring unit\u2019s profitability (P&amp;L) model on AWS — SageMaker, Athena, S3 — over large volumes of transactional data. Built the ETL/ELT <i>pipelines</i> in PySpark and advanced SQL, the KPI dashboards in MicroStrategy and Apps Script, and predictive models in Python supporting financial and commercial decisions.',
 
-    'exp.4t': 'Software, AI and game developer',
-    'exp.4w': 'OdobGames · own studio',
-    'exp.4b': 'Mobile development in Unity (C#) and prototyping in Unreal Engine (UEFN), owning the full cycle through to store publication. Internal automation with n8n and API integration, plus data-driven work to improve the studio\u2019s products.',
+    'exp.4t': 'Intern · Profitability',
+    'exp.4w': 'BBVA Colombia · Client Solutions · Bogotá',
+    'exp.4b': 'My first six months at BBVA, inside the profitability area: I automated the team\u2019s operational tasks and supported the retail banking operation. I carried on in the same unit afterwards, in the role above.',
 
-    'exp.5t': 'B.S. Computer Science',
-    'exp.5w': 'Universidad Nacional de Colombia · Bogotá',
-    'exp.5b': 'Algorithms, artificial intelligence, machine learning, cryptography and databases. It is the foundation under both the data work and the projects below.',
+    'exp.5t': 'Software, AI and game developer',
+    'exp.5w': 'OdobGames · own studio',
+    'exp.5b': 'Mobile development in Unity (C#) and prototyping in Unreal Engine (UEFN), owning the full cycle through to store publication. Internal automation with n8n and API integration, plus data-driven work to improve the studio\u2019s products.',
+
+    'exp.6t': 'B.S. Computer Science',
+    'exp.6w': 'Universidad Nacional de Colombia · Bogotá',
+    'exp.6b': 'Algorithms, artificial intelligence, machine learning, cryptography and databases. It is the foundation under both the data work and the projects below.',
 
     'exp.cv': 'Would you rather have the full document?',
     'exp.cvlink': 'Download the CV as PDF',
@@ -225,17 +229,20 @@ window.I18N = {
 
 
     /* -------------------------------------------------------- tech tags */
+    'tag.autoproc': "Process automation",
     'tag.binary': "Binary protocols",
     'tag.cfpages': "Cloudflare Pages",
     'tag.fpv': "First-person",
     'tag.lagcomp': "Lag compensation",
     'tag.procgen': "Procedural generation",
+    'tag.retail': "Retail banking",
     'tag.roguelike': "Roguelike design",
     'tag.web3d': "3D in the browser",
     'tag.js': "JavaScript",
     'tag.mcproto': "Minecraft Java protocol",
     'tag.ml': "Machine learning",
     'tag.netprog': "Network programming",
+    'tag.opsupport': "Operations support",
     'tag.physics': "Game physics",
     'tag.rtmp': "Real-time multiplayer",
     'tag.statesync': "State synchronization",
