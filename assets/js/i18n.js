@@ -188,14 +188,9 @@ window.I18N = {
     'exp.4w': 'OdobGames · own studio',
     'exp.4b': 'Mobile development in Unity (C#) and prototyping in Unreal Engine (UEFN), owning the full cycle through to store publication. Internal automation with n8n and API integration, plus data-driven work to improve the studio\u2019s products.',
 
-    'exp.5when': '6 months',
-    'exp.5t': 'Intern · Operations automation',
-    'exp.5w': 'BBVA Colombia · Retail banking · Bogotá',
-    'exp.5b': 'Six months of an internship in retail banking: automating the operational tasks of the area and supporting its day-to-day running. The first time I saw up close how much repetitive work sits behind a bank — and how much of it can be taken out of the way.',
-
-    'exp.6t': 'B.S. Computer Science',
-    'exp.6w': 'Universidad Nacional de Colombia · Bogotá',
-    'exp.6b': 'Algorithms, artificial intelligence, machine learning, cryptography and databases. It is the foundation under both the data work and the projects below.',
+    'exp.5t': 'B.S. Computer Science',
+    'exp.5w': 'Universidad Nacional de Colombia · Bogotá',
+    'exp.5b': 'Algorithms, artificial intelligence, machine learning, cryptography and databases. It is the foundation under both the data work and the projects below.',
 
     'exp.cv': 'Would you rather have the full document?',
     'exp.cvlink': 'Download the CV as PDF',
@@ -230,20 +225,17 @@ window.I18N = {
 
 
     /* -------------------------------------------------------- tech tags */
-    'tag.autoproc': "Process automation",
     'tag.binary': "Binary protocols",
     'tag.cfpages': "Cloudflare Pages",
     'tag.fpv': "First-person",
     'tag.lagcomp': "Lag compensation",
     'tag.procgen': "Procedural generation",
-    'tag.retail': "Retail banking",
     'tag.roguelike': "Roguelike design",
     'tag.web3d': "3D in the browser",
     'tag.js': "JavaScript",
     'tag.mcproto': "Minecraft Java protocol",
     'tag.ml': "Machine learning",
     'tag.netprog': "Network programming",
-    'tag.opsupport': "Operations support",
     'tag.physics': "Game physics",
     'tag.rtmp': "Real-time multiplayer",
     'tag.statesync': "State synchronization",
