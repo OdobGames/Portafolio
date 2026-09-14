@@ -186,7 +186,7 @@ window.I18N = {
 
     'exp.4t': 'Intern · Profitability',
     'exp.4w': 'BBVA Colombia · Client Solutions · Bogotá',
-    'exp.4b': 'My first six months at BBVA, inside the profitability area: I automated the team\u2019s operational tasks and supported the retail banking operation. I carried on in the same unit afterwards, in the role above.',
+    'exp.4b': 'Professional internship in the profitability area. I automated the team\u2019s recurring operational tasks, replacing procedures that until then were carried out by hand with automated routines, and supported the retail banking operation within the unit.',
 
     'exp.5t': 'Software, AI and game developer',
     'exp.5w': 'OdobGames · own studio',
