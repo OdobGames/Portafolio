@@ -193,17 +193,18 @@
       "kind": "web",
       "status": "playable",
       "tagline": {
-        "es": "Shooter de supervivencia por oleadas en primera persona.",
-        "en": "First-person wave-survival shooter."
+        "es": "Shooter de supervivencia por oleadas, solo o en cooperativo en línea.",
+        "en": "Wave-survival shooter, solo or online co-op."
       },
       "description": {
-        "es": "Armas, ventajas y oleadas de zombis en un mapa propio, hecho en Three.js. Un jugador. Teclado y ratón.",
-        "en": "Weapons, perks and zombie waves on a custom map, built with Three.js. Single player. Keyboard and mouse."
+        "es": "Defiende una fábrica de oleadas de zombis con 14 armas, ventajas, trampas, un jefe cada 10 rondas y un mapa propio. Cooperativo P2P de 2 a 4 jugadores con salas por código, hecho con WebRTC y un Worker de Cloudflare solo para señalización. Teclado y ratón.",
+        "en": "Defend a factory from zombie waves with 14 weapons, perks, traps, a boss every 10 rounds and an original map. Peer-to-peer co-op for 2 to 4 players with room codes, built on WebRTC and a Cloudflare Worker used only for signalling. Keyboard and mouse."
       },
       "stack": [
         "Three.js",
-        "Vite",
-        "Cloudflare Pages"
+        "WebRTC",
+        "Cloudflare Workers",
+        "Durable Objects"
       ],
       "url": "https://undead-protocol.pages.dev/",
       "thumb": "assets/img/projects/undead-protocol.webp",
