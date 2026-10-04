@@ -1,12 +1,12 @@
 {
-  "name": "Oscar Ordoñez — Software Engineer",
+  "name": "Oscar Ordoñez — Data & AI Engineer",
   "short_name": "Oscar Ordoñez",
-  "description": "Portfolio: browser-based real-time systems, voxel games and production automation.",
+  "description": "Portfolio of a data governance engineer and AI developer, with playable browser games.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#07080c",
-  "theme_color": "#07080c",
+  "background_color": "#f7f6f2",
+  "theme_color": "#f7f6f2",
   "icons": [
     { "src": "assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
   ]

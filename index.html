@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#07080c">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#07080c" media="(prefers-color-scheme: dark)">
 
 <title>Oscar Ordoñez — Ingeniero de datos e IA · Portafolio</title>
 <meta name="description" content="Gobierno de datos en Claro Colombia, BI y modelos predictivos en BBVA, agentes de IA en Softgic. Científico de la Computación (UNAL). Databricks, AWS, Python, SQL.">
@@ -20,26 +21,28 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:url" content="https://odobgames.github.io/Portafolio/">
 <meta property="og:title" content="Oscar Ordoñez — Ingeniero de datos e IA">
-<meta property="og:description" content="Gobierno de datos en Claro, BI y modelos en BBVA, agentes de IA en Softgic. Y por fuera del horario, motores voxel que corren en el navegador.">
+<meta property="og:description" content="Gobierno de datos en Claro, BI y modelos en BBVA, agentes de IA en Softgic. Y por fuera del horario, juegos que corren en el navegador.">
 <meta property="og:image" content="https://odobgames.github.io/Portafolio/assets/img/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Oscar Ordoñez — ingeniero de datos e IA. Isla voxel isométrica sobre fondo oscuro.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Oscar Ordoñez — Ingeniero de datos e IA">
-<meta name="twitter:description" content="Gobierno de datos, BI e IA aplicada. Y motores voxel en el navegador.">
+<meta name="twitter:description" content="Gobierno de datos, BI e IA aplicada. Y juegos que corren en el navegador.">
 <meta name="twitter:image" content="https://odobgames.github.io/Portafolio/assets/img/og.png">
 
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/img/favicon.svg">
 <link rel="manifest" href="site.webmanifest">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/styles.css">
 <!-- Set before first paint so scroll-reveal only hides content when JS can reveal it again. -->
-<script>document.documentElement.classList.add('js');</script>
+<script>
+  document.documentElement.classList.add('js');
+  try { var t = localStorage.getItem('oo-theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
 
 <script type="application/ld+json">
 {
@@ -83,10 +86,6 @@
       "sameAs": [
         "https://www.linkedin.com/in/oscarordonez13",
         "https://github.com/OdobGames",
-        "https://webcraft-8p8.pages.dev/",
-        "https://carritos-bty.pages.dev/",
-        "https://frente-de-papel.pages.dev/",
-        "https://backrooms-wanderer.pages.dev/",
         "https://odobgames.github.io/OdobGames"
       ],
       "seeks": { "@type": "Demand", "name": "Software engineering roles" }
@@ -99,7 +98,7 @@
         { "@type": "ListItem", "position": 2, "item": { "@type": "SoftwareApplication", "name": "Carritos", "applicationCategory": "GameApplication", "operatingSystem": "Web browser", "url": "https://carritos-bty.pages.dev/", "description": "An online multiplayer voxel kart racing game playable in the browser.", "author": { "@id": "https://odobgames.github.io/Portafolio/#oscar" } } },
         { "@type": "ListItem", "position": 3, "item": { "@type": "SoftwareApplication", "name": "Frente de Papel", "applicationCategory": "GameApplication", "operatingSystem": "Web browser", "url": "https://frente-de-papel.pages.dev/", "description": "An online multiplayer first-person shooter that runs in the browser, with a cut-paper, cartoon art direction.", "author": { "@id": "https://odobgames.github.io/Portafolio/#oscar" } } },
         { "@type": "ListItem", "position": 4, "item": { "@type": "SoftwareApplication", "name": "Backrooms Wanderer", "applicationCategory": "GameApplication", "operatingSystem": "Web browser", "url": "https://backrooms-wanderer.pages.dev/", "description": "A first-person survival roguelike set in procedurally generated Backrooms levels, played online in the browser.", "author": { "@id": "https://odobgames.github.io/Portafolio/#oscar" } } },
-        { "@type": "ListItem", "position": 5, "item": { "@type": "SoftwareSourceCode", "name": "Monitor DIAN", "codeRepository": "https://github.com/OdobGames/monitor-dian", "programmingLanguage": "Python", "description": "Headless Chromium watcher that emails an alert when appointment slots open, deployable to GitHub Actions or a systemd-managed VM.", "author": { "@id": "https://odobgames.github.io/Portafolio/#oscar" } } }
+        { "@type": "ListItem", "position": 5, "item": { "@type": "SoftwareApplication", "name": "OpenWorld", "applicationCategory": "SocialNetworkingApplication", "operatingSystem": "Android", "url": "https://play.google.com/store/apps/details?id=com.odobgames.openworld", "description": "A native Android social app to meet people and chat, published on Google Play.", "author": { "@id": "https://odobgames.github.io/Portafolio/#oscar" } } }
       ]
     }
   ]
@@ -128,7 +127,7 @@
     <nav class="nav-links" id="nav-links" aria-label="Principal">
       <a href="#experiencia" data-i18n="nav.exp">Experiencia</a>
       <a href="#proyectos" data-i18n="nav.work">Proyectos</a>
-      <a href="#mas" data-i18n="nav.more">Otros proyectos</a>
+      <a href="juegos/" data-i18n="nav.games">Juegos</a>
       <a href="#habilidades" data-i18n="nav.skills">Habilidades</a>
       <a href="#contacto" data-i18n="nav.contact">Contacto</a>
     </nav>
@@ -138,10 +137,10 @@
         <button type="button" data-lang="es" aria-pressed="true">ES</button>
         <button type="button" data-lang="en" aria-pressed="false">EN</button>
       </div>
-      <button class="icon-btn" type="button" id="motion-toggle" aria-pressed="false"
-              data-i18n-attr="aria-label:a11y.motion" aria-label="Pausar las animaciones">
-        <svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
-        <svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+      <button class="icon-btn" type="button" id="theme-toggle" aria-pressed="false"
+              data-i18n-attr="aria-label:a11y.theme" aria-label="Modo oscuro">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
       </button>
       <a class="btn btn-primary btn-sm" href="#contacto" data-i18n="nav.cta">Hablemos</a>
       <button class="burger" type="button" aria-expanded="false" aria-controls="nav-links"
@@ -156,67 +155,69 @@
 
 <!-- ============================================================== hero -->
 <section class="hero" id="inicio">
-  <canvas class="hero-canvas" data-voxel="ambient" data-seed="21" aria-hidden="true"></canvas>
-  <div class="shell">
-    <p class="badge" data-reveal>
-      <span class="dot" aria-hidden="true"></span>
-      <span data-i18n="hero.badge">Abierto a roles de analítica, datos, IA e ingeniería — Bogotá y remoto</span>
-    </p>
+  <div class="shell hero-grid">
+    <div class="hero-copy">
+      <p class="badge">
+        <span class="dot" aria-hidden="true"></span>
+        <span data-i18n="hero.badge">Abierto a roles de analítica, datos, IA e ingeniería — Bogotá y remoto</span>
+      </p>
 
-    <p class="kicker" data-reveal data-i18n="hero.kicker">Gobierno de datos · Ciencia de datos · Ingeniería de IA</p>
+      <p class="kicker" data-i18n="hero.role">Data Governance Engineer · Data Scientist · AI Engineer</p>
 
-    <h1 data-reveal>
-      <span data-i18n="hero.title1">Gobierno datos a</span>
-      <span class="grad" data-i18n="hero.title2">escala corporativa</span>
-      <span data-i18n="hero.title3">y construyo lo que corre encima.</span>
-    </h1>
+      <h1>
+        <span data-i18n="hero.title1">Datos confiables a</span>
+        <span class="grad" data-i18n="hero.title2">escala corporativa</span>
+        <span data-i18n="hero.title3">e IA que los pone a trabajar.</span>
+      </h1>
 
-    <p class="lede" data-reveal data-i18n="hero.lede">
-      Soy Oscar Ordoñez, Científico de la Computación de la Universidad Nacional de Colombia.
-      Hoy hago gobierno del ciclo de vida del dato sobre el ecosistema de Claro Colombia;
-      antes construí el modelo de rentabilidad de la unidad adquirente de BBVA sobre AWS y
-      un agente de IA de punta a punta en Softgic. Por fuera del horario escribo motores
-      voxel y protocolos de red que corren dentro del navegador.
-    </p>
+      <p class="lede" data-i18n="hero.lede">
+        Soy Oscar Ordoñez, Científico de la Computación de la Universidad Nacional de Colombia.
+        Hoy hago gobierno del ciclo de vida del dato en Claro Colombia; antes construí el modelo
+        de rentabilidad de la unidad adquirente de BBVA sobre AWS y un agente de IA de punta a
+        punta en Softgic. Por fuera del horario publico juegos que corren en el navegador.
+      </p>
 
-    <div class="hero-actions" data-reveal>
-      <a class="btn btn-primary" href="#experiencia">
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="assets/cv/CV-Oscar-Ordonez.pdf" download data-i18n-attr="href:cv.file">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+          <span data-i18n="hero.cta2">Descargar CV (PDF)</span>
+        </a>
+        <a class="btn btn-ghost" href="#experiencia">
+          <span data-i18n="hero.cta1">Ver mi experiencia</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="quiet-link" href="https://github.com/OdobGames" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.6 4.7 18.6 5 18.6 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
+          <span data-i18n="hero.cta3">github.com/OdobGames</span>
+        </a>
+      </div>
+    </div>
+
+    <aside class="hero-card" aria-labelledby="hero-card-title">
+      <h2 id="hero-card-title" class="hero-card-title" data-i18n="hero.card.title">De un vistazo</h2>
+      <dl class="facts">
+        <div class="fact">
+          <dt data-i18n="fact.1.n">Claro · BBVA</dt>
+          <dd data-i18n="fact.1.t">Gobierno de datos en telco, rentabilidad y BI en banca</dd>
+        </div>
+        <div class="fact">
+          <dt data-i18n="fact.2.n">Databricks · AWS</dt>
+          <dd data-i18n="fact.2.t">Unity Catalog, Delta Lake, SageMaker, Athena, PySpark</dd>
+        </div>
+        <div class="fact">
+          <dt data-i18n="fact.3.n">UNAL · 2025</dt>
+          <dd data-i18n="fact.3.t">Ciencias de la Computación (B.S.), Universidad Nacional</dd>
+        </div>
+        <div class="fact">
+          <dt data-i18n="fact.4.n">Inglés C1</dt>
+          <dd data-i18n="fact.4.t">Bogotá, UTC−5: misma jornada que la costa este de EE. UU.</dd>
+        </div>
+      </dl>
+      <a class="hero-card-link" href="juegos/">
+        <span data-i18n="hero.card.cta">Mira los juegos que publico</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        <span data-i18n="hero.cta1">Ver mi experiencia</span>
       </a>
-      <a class="btn btn-ghost" href="assets/cv/CV-Oscar-Ordonez.pdf" download data-i18n-attr="href:cv.file">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-        <span data-i18n="hero.cta2">Descargar CV (PDF)</span>
-      </a>
-      <a class="quiet-link" href="https://github.com/OdobGames" target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.6 4.7 18.6 5 18.6 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
-        <span data-i18n="hero.cta3">github.com/OdobGames</span>
-      </a>
-    </div>
-
-    <div class="facts" data-stagger>
-      <div class="fact" data-reveal>
-        <b data-i18n="fact.1.n">Claro · BBVA</b>
-        <span data-i18n="fact.1.t">Gobierno de datos en telco, rentabilidad y BI en banca</span>
-      </div>
-      <div class="fact" data-reveal>
-        <b data-i18n="fact.2.n">Databricks · AWS</b>
-        <span data-i18n="fact.2.t">Unity Catalog, Delta Lake, SageMaker, Athena, PySpark</span>
-      </div>
-      <div class="fact" data-reveal>
-        <b data-i18n="fact.3.n">UNAL · 2025</b>
-        <span data-i18n="fact.3.t">Ciencias de la Computación (B.S.), Universidad Nacional</span>
-      </div>
-      <div class="fact" data-reveal>
-        <b data-i18n="fact.4.n">Inglés C1</b>
-        <span data-i18n="fact.4.t">Bogotá, UTC−5: misma jornada que la costa este de EE. UU.</span>
-      </div>
-    </div>
-
-    <p class="scroll-cue" data-reveal>
-      <i aria-hidden="true"></i>
-      <span data-i18n="hero.scroll">Empieza por la experiencia</span>
-    </p>
+    </aside>
   </div>
 </section>
 
@@ -342,11 +343,11 @@
   <div class="shell">
     <header class="section-head" data-reveal>
       <p class="eyebrow" data-i18n="work.eyebrow">Trabajo destacado</p>
-      <h2 data-i18n="work.title">Cuatro cosas difíciles, en línea y jugables</h2>
+      <h2 data-i18n="work.title">Cuatro juegos completos, en línea y jugables</h2>
       <p data-i18n="work.intro">
         Fuera del trabajo con datos construyo sistemas en tiempo real. Los cuatro corren en el
-        navegador, sin instalar nada, y se pueden abrir ahora mismo: no son ejercicios de
-        curso, son sistemas completos que tuve que diseñar de punta a punta.
+        navegador, sin instalar nada: no son ejercicios de curso, son sistemas completos que
+        diseñé de punta a punta.
       </p>
     </header>
 
@@ -364,7 +365,9 @@
             instalador, sin launcher y sin máquina virtual de Java.
           </p>
 
-          <ol class="challenges">
+          <details class="project-more">
+            <summary><span data-i18n="work.challenges">Retos de ingeniería</span></summary>
+            <ol class="challenges">
             <li>
               <span class="num" aria-hidden="true">01</span>
               <div>
@@ -394,6 +397,7 @@
               </div>
             </li>
           </ol>
+          </details>
 
           <div class="tags">
             <span class="tag" data-i18n="tag.js">JavaScript</span>
@@ -412,25 +416,16 @@
         </div>
 
         <div class="project-media">
-          <div class="frame">
-            <div class="frame-bar" aria-hidden="true">
-              <i></i><i></i><i></i><span>webcraft-8p8.pages.dev</span>
-            </div>
-            <canvas data-voxel="world" data-seed="1043"
-                    data-i18n-attr="aria-label:work.webcraft.canvas"
-                    role="img"
-                    data-i18n="work.webcraft.canvas"
-                    aria-label="Animación de una isla voxel que se carga por columnas, evocando la llegada de chunks desde un servidor">Animación de una isla voxel que se carga por columnas, evocando la llegada de chunks desde un servidor.</canvas>
-          </div>
-          <p class="media-note" data-i18n="work.webcraft.note">
-            Ilustración renderizada en esta página con un motor isométrico propio: un mundo que
-            se carga chunk a chunk. No es una captura de WebCraft — para verlo de verdad, abre el enlace.
-          </p>
+          <figure class="project-shot">
+            <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>webcraft-8p8.pages.dev</span></div>
+            <img src="assets/img/projects/webcraft.webp" width="960" height="540" loading="lazy" decoding="async"
+                 alt="Captura de WebCraft: menú principal del cliente en el navegador" data-i18n-attr="alt:work.webcraft.alt">
+          </figure>
         </div>
       </article>
 
       <!-- Carritos -->
-      <article class="project project--alt project--teal" data-reveal>
+      <article class="project project--alt" data-reveal>
         <div class="project-body">
           <p class="project-status"><span class="dot" aria-hidden="true"></span><span data-i18n="work.live2">En vivo</span><span class="sep" aria-hidden="true">·</span><span class="scope" data-i18n="work.carritos.scope">Proyecto propio, de punta a punta</span></p>
           <h3>Carritos</h3>
@@ -441,7 +436,9 @@
             conexión distinta.
           </p>
 
-          <ol class="challenges">
+          <details class="project-more">
+            <summary><span data-i18n="work.challenges">Retos de ingeniería</span></summary>
+            <ol class="challenges">
             <li>
               <span class="num" aria-hidden="true">01</span>
               <div>
@@ -471,6 +468,7 @@
               </div>
             </li>
           </ol>
+          </details>
 
           <div class="tags">
             <span class="tag" data-i18n="tag.rtmp">Multijugador en tiempo real</span>
@@ -489,25 +487,16 @@
         </div>
 
         <div class="project-media">
-          <div class="frame">
-            <div class="frame-bar" aria-hidden="true">
-              <i></i><i></i><i></i><span>carritos-bty.pages.dev</span>
-            </div>
-            <canvas data-voxel="karts" data-seed="77"
-                    data-i18n-attr="aria-label:work.carritos.canvas"
-                    role="img"
-                    data-i18n="work.carritos.canvas"
-                    aria-label="Animación de karts voxel dando una vuelta a un circuito isométrico">Animación de karts voxel dando una vuelta a un circuito isométrico.</canvas>
-          </div>
-          <p class="media-note" data-i18n="work.carritos.note">
-            Escena animada en esta misma página con el motor isométrico del sitio. No es una
-            captura de Carritos — el juego real está a un clic.
-          </p>
+          <figure class="project-shot">
+            <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>carritos-bty.pages.dev</span></div>
+            <img src="assets/img/projects/carritos.webp" width="960" height="540" loading="lazy" decoding="async"
+                 alt="Captura de Carritos: menú principal del juego de karts" data-i18n-attr="alt:work.carritos.alt">
+          </figure>
         </div>
       </article>
 
       <!-- Frente de Papel -->
-      <article class="project project--paper" data-reveal>
+      <article class="project" data-reveal>
         <div class="project-body">
           <p class="project-status"><span class="dot" aria-hidden="true"></span><span data-i18n="work.live3">En vivo</span><span class="sep" aria-hidden="true">·</span><span class="scope" data-i18n="work.papel.scope">Proyecto propio, de punta a punta</span></p>
           <h3>Frente de Papel</h3>
@@ -519,7 +508,9 @@
             corre en cualquier portátil.
           </p>
 
-          <ol class="challenges">
+          <details class="project-more">
+            <summary><span data-i18n="work.challenges">Retos de ingeniería</span></summary>
+            <ol class="challenges">
             <li>
               <span class="num" aria-hidden="true">01</span>
               <div>
@@ -549,6 +540,7 @@
               </div>
             </li>
           </ol>
+          </details>
 
           <div class="tags">
             <span class="tag" data-i18n="tag.js">JavaScript</span>
@@ -567,25 +559,16 @@
         </div>
 
         <div class="project-media">
-          <div class="frame">
-            <div class="frame-bar" aria-hidden="true">
-              <i></i><i></i><i></i><span>frente-de-papel.pages.dev</span>
-            </div>
-            <canvas data-voxel="paper" data-seed="512"
-                    data-i18n-attr="aria-label:work.papel.canvas"
-                    role="img"
-                    data-i18n="work.papel.canvas"
-                    aria-label="Animación de una arena de papel recortado con jugadores de dos equipos moviéndose entre coberturas de cartón">Animación de una arena de papel recortado con jugadores de dos equipos moviéndose entre coberturas de cartón.</canvas>
-          </div>
-          <p class="media-note" data-i18n="work.papel.note">
-            Escena dibujada en esta página con el motor isométrico del sitio, en papel y cartón.
-            No es una captura de Frente de Papel — el juego real está a un clic.
-          </p>
+          <figure class="project-shot">
+            <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>frente-de-papel.pages.dev</span></div>
+            <img src="assets/img/projects/frente-de-papel.webp" width="960" height="540" loading="lazy" decoding="async"
+                 alt="Captura de Frente de Papel: arena de papel recortado" data-i18n-attr="alt:work.papel.alt">
+          </figure>
         </div>
       </article>
 
       <!-- Backrooms Wanderer -->
-      <article class="project project--alt project--amber" data-reveal>
+      <article class="project project--alt" data-reveal>
         <div class="project-body">
           <p class="project-status"><span class="dot" aria-hidden="true"></span><span data-i18n="work.live4">En vivo</span><span class="sep" aria-hidden="true">·</span><span class="scope" data-i18n="work.backrooms.scope">Proyecto propio, de punta a punta</span></p>
           <h3>Backrooms Wanderer</h3>
@@ -596,7 +579,9 @@
             se acaba, el siguiente intento empieza en un sitio que nadie ha visto antes.
           </p>
 
-          <ol class="challenges">
+          <details class="project-more">
+            <summary><span data-i18n="work.challenges">Retos de ingeniería</span></summary>
+            <ol class="challenges">
             <li>
               <span class="num" aria-hidden="true">01</span>
               <div>
@@ -626,6 +611,7 @@
               </div>
             </li>
           </ol>
+          </details>
 
           <div class="tags">
             <span class="tag" data-i18n="tag.web3d">3D en el navegador</span>
@@ -644,20 +630,11 @@
         </div>
 
         <div class="project-media">
-          <div class="frame">
-            <div class="frame-bar" aria-hidden="true">
-              <i></i><i></i><i></i><span>backrooms-wanderer.pages.dev</span>
-            </div>
-            <canvas data-voxel="rooms" data-seed="308"
-                    data-i18n-attr="aria-label:work.backrooms.canvas"
-                    role="img"
-                    data-i18n="work.backrooms.canvas"
-                    aria-label="Animación de un laberinto de habitaciones amarillas con una figura que camina por los pasillos bajo luces que parpadean">Animación de un laberinto de habitaciones amarillas con una figura que camina por los pasillos bajo luces que parpadean.</canvas>
-          </div>
-          <p class="media-note" data-i18n="work.backrooms.note">
-            Laberinto generado y dibujado en esta misma página por el motor isométrico del sitio.
-            No es una captura de Backrooms Wanderer — para verlo en primera persona, abre el enlace.
-          </p>
+          <figure class="project-shot">
+            <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>backrooms-wanderer.pages.dev</span></div>
+            <img src="assets/img/projects/backrooms-wanderer.webp" width="960" height="540" loading="lazy" decoding="async"
+                 alt="Captura de Backrooms Wanderer: pasillo amarillo en primera persona" data-i18n-attr="alt:work.backrooms.alt">
+          </figure>
         </div>
       </article>
 
@@ -667,110 +644,15 @@
 
 <div class="shell">
   <aside class="mid-cta" data-reveal>
-    <p data-i18n="midcta.text">¿Te interesa cómo está construido alguno de ellos? Escríbeme y te lo cuento por dentro.</p>
-    <a class="btn btn-ghost btn-sm" href="#contacto">
-      <span data-i18n="midcta.cta">Hablemos</span>
+    <p data-i18n="midcta.text">¿Quieres ver todo lo que he publicado, incluidas mis apps de Google Play?</p>
+    <a class="btn btn-primary btn-sm" href="juegos/">
+      <span data-i18n="midcta.cta">Ir al hub de juegos</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
   </aside>
 </div>
 
 <!-- ============================================================ more -->
-<section id="mas">
-  <div class="shell">
-    <header class="section-head" data-reveal>
-      <p class="eyebrow" data-i18n="more.eyebrow">Otros proyectos</p>
-      <h2 data-i18n="more.title">Producción, juegos publicados y fundamentos</h2>
-      <p data-i18n="more.intro">
-        Escribir un motor es una cosa. Que algo siga funcionando meses después, en una máquina
-        que nadie mira, es otra distinta.
-      </p>
-    </header>
-
-    <div class="grid" data-stagger>
-
-      <article class="card" data-reveal>
-        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></div>
-        <p class="card-kind" data-i18n="more.dian.kind">Python · Automatización</p>
-        <h3>Monitor DIAN</h3>
-        <p data-i18n="more.dian.body">
-          Vigila con Chromium headless la página de citas de la DIAN y envía un correo en cuanto
-          se abre un cupo. Corre en tres sitios distintos —un PC, GitHub Actions o una VM con
-          systemd—, saca las credenciales del código a variables de entorno, se instala con un
-          usuario propio y se limpia sola para poder quedarse encendida durante meses.
-        </p>
-        <a class="link" href="https://github.com/OdobGames/monitor-dian" target="_blank" rel="noopener noreferrer">
-          <span data-i18n="more.dian.link">Ver el repositorio</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
-      </article>
-
-      <article class="card" data-reveal>
-        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m3 7 9-4 9 4-9 4-9-4Z"/><path d="m3 12 9 4 9-4"/><path d="m3 17 9 4 9-4"/></svg></div>
-        <p class="card-kind" data-i18n="more.play.kind">Unity · C# · Google Play</p>
-        <h3 data-i18n="more.play.title">OdobGames en Google Play</h3>
-        <p data-i18n="more.play.body">
-          El estudio con el que publiqué tres juegos: Heart Tale, un combate infinito al estilo
-          Undertale; Mordecai Infinite Runner, con marcadores en línea; y 3D Cube Parkour, un
-          parkour voxel con clasificación global. Cada título tiene su ficha pública en la tienda.
-        </p>
-        <ul class="stores" data-i18n-attr="aria-label:more.play.storesLabel" aria-label="Juegos en Google Play">
-          <li><a href="https://play.google.com/store/apps/details?id=com.Odob.HeartTale" target="_blank" rel="noopener noreferrer">Heart Tale</a></li>
-          <li><a href="https://play.google.com/store/apps/details?id=com.OdobGames.MordecaiInfiniteRunner" target="_blank" rel="noopener noreferrer">Mordecai Infinite Runner</a></li>
-          <li><a href="https://play.google.com/store/apps/details?id=com.OdobGames.TikTokMinecraftFilterGame" target="_blank" rel="noopener noreferrer">3D Cube Parkour</a></li>
-        </ul>
-        <a class="link" href="https://odobgames.github.io/OdobGames" target="_blank" rel="noopener noreferrer">
-          <span data-i18n="more.play.link">Ver el estudio</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
-      </article>
-
-      <article class="card" data-reveal>
-        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M7 10v4M5 12h4M16 11h.01M18.5 13.5h.01"/></svg></div>
-        <p class="card-kind" data-i18n="more.retro.kind">Web · Front-end</p>
-        <h3>Retro Arcade Games</h3>
-        <p data-i18n="more.retro.body">
-          Una web para jugar clásicos retro gratis, publicada en GitHub Pages. Un ejercicio de
-          hacer que algo cargue rápido, se entienda solo y funcione en cualquier pantalla.
-        </p>
-        <a class="link" href="https://odobgames.github.io/Retro-Arcade-Games/" target="_blank" rel="noopener noreferrer">
-          <span data-i18n="more.retro.link">Abrir el arcade</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
-      </article>
-
-      <article class="card" data-reveal>
-        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 15h18M5 15V9l4-3h6l4 3v6"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/></svg></div>
-        <p class="card-kind" data-i18n="more.tank.kind">Juego · Gameplay</p>
-        <h3>Survival Tank Game</h3>
-        <p data-i18n="more.tank.body">
-          Un juego de tanques de supervivencia. De la época en la que estaba aprendiendo a
-          separar el bucle de juego de todo lo demás, y se nota en lo que vino después.
-        </p>
-        <a class="link" href="https://github.com/OdobGames/Survival-Tank-Game" target="_blank" rel="noopener noreferrer">
-          <span data-i18n="more.tank.link">Ver el repositorio</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
-      </article>
-
-      <article class="card" data-reveal>
-        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 3 7v6c0 5 3.8 8 9 8s9-3 9-8V7l-9-4Z"/><path d="M9 12h6M12 9v6"/></svg></div>
-        <p class="card-kind" data-i18n="more.cs.kind">UNAL · Ciencias de la Computación</p>
-        <h3 data-i18n="more.cs.title">Fundamentos: IA, cripto y datos</h3>
-        <p data-i18n="more.cs.body">
-          Los repositorios del pregrado: proyectos de inteligencia artificial, reconocimiento de
-          dígitos con aprendizaje automático, criptografía y bases de datos. Es la base teórica
-          debajo de todo lo demás en esta página.
-        </p>
-        <a class="link" href="https://github.com/OdobGames?tab=repositories" target="_blank" rel="noopener noreferrer">
-          <span data-i18n="more.cs.link">Ver los repositorios</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-        </a>
-      </article>
-
-    </div>
-  </div>
-</section>
 
 <!-- ========================================================== skills -->
 <section id="habilidades">
@@ -817,7 +699,7 @@
 
       <div class="skill" data-reveal>
         <h3 data-i18n="skills.g6t">Ingeniería de software y tiempo real</h3>
-        <p data-i18n="skills.g6b">El otro lado: motores voxel, protocolos binarios y juegos publicados. El renderizador de esta página lo escribí sin librerías.</p>
+        <p data-i18n="skills.g6b">El otro lado: juegos en el navegador, protocolos binarios y apps publicadas en tiendas.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">C#</span><span class="tag">Unity</span><span class="tag">UEFN</span><span class="tag">JavaScript</span><span class="tag" data-i18n="tag.voxelrender">Renderizado voxel</span><span class="tag" data-i18n="tag.binary">Protocolos binarios</span><span class="tag">Git</span><span class="tag">Azure DevOps</span></div>
       </div>
     </div>
@@ -874,10 +756,7 @@
     <nav class="foot-links" data-i18n-attr="aria-label:a11y.footer" aria-label="Enlaces del pie">
       <a href="https://www.linkedin.com/in/oscarordonez13" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a href="https://github.com/OdobGames" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://webcraft-8p8.pages.dev/" target="_blank" rel="noopener noreferrer">WebCraft</a>
-      <a href="https://carritos-bty.pages.dev/" target="_blank" rel="noopener noreferrer">Carritos</a>
-      <a href="https://frente-de-papel.pages.dev/" target="_blank" rel="noopener noreferrer">Frente de Papel</a>
-      <a href="https://backrooms-wanderer.pages.dev/" target="_blank" rel="noopener noreferrer">Backrooms Wanderer</a>
+      <a href="juegos/" data-i18n="footer.games">Juegos y proyectos</a>
       <a href="https://github.com/OdobGames/Portafolio" target="_blank" rel="noopener noreferrer" data-i18n="footer.source">Código de este sitio</a>
       <a href="mailto:13odob27@gmail.com" data-i18n="footer.mail">Correo</a>
     </nav>
@@ -886,7 +765,7 @@
     <p class="legal" data-i18n="footer.legal">
       Minecraft es una marca registrada de Mojang Studios y Mario Kart de Nintendo. Los
       proyectos de esta página no están afiliados a ninguna de las dos empresas ni cuentan
-      con su respaldo. · Última actualización: septiembre de 2026.
+      con su respaldo. · Última actualización: octubre de 2026.
     </p>
   </div>
 </footer>
@@ -897,6 +776,5 @@
 
 <script src="assets/js/i18n.js" defer></script>
 <script src="assets/js/main.js" defer></script>
-<script src="assets/js/voxel.js" defer></script>
 </body>
 </html>

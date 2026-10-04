@@ -70,6 +70,7 @@
       btn.setAttribute('aria-pressed', String(btn.getAttribute('data-lang') === lang));
     });
     try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) { /* private mode */ }
+    document.dispatchEvent(new CustomEvent('langchange', { detail: { lang: lang } }));
   }
 
   function initLang() {
@@ -188,31 +189,6 @@
     });
   }
 
-  /* -------------------------------------------------------- motion toggle */
-
-  function initMotion() {
-    var btn = document.getElementById('motion-toggle');
-    if (!btn) return;
-    // The renderer already renders a single static frame under
-    // prefers-reduced-motion, so there is nothing left for this to control.
-    if (reduced) { btn.hidden = true; return; }
-
-    var stored = null;
-    try { stored = localStorage.getItem('oo-motion'); } catch (e) { /* ignore */ }
-
-    function apply(off) {
-      if (window.VoxelScenes) window.VoxelScenes.setPaused(off);
-      btn.setAttribute('aria-pressed', String(off));
-      document.documentElement.classList.toggle('motion-off', off);
-      try { localStorage.setItem('oo-motion', off ? 'off' : 'on'); } catch (e) { /* ignore */ }
-    }
-
-    if (stored === 'off') apply(true);
-    btn.addEventListener('click', function () {
-      apply(btn.getAttribute('aria-pressed') !== 'true');
-    });
-  }
-
   /* ----------------------------------------------------------- copy mail */
 
   function initCopyMail() {
@@ -229,13 +205,59 @@
     });
   }
 
+  /* --------------------------------------------------------------- theme */
+
+  // The inline script in <head> applies a saved choice before first paint; this
+  // wires the button and keeps its pressed state in sync. With no saved choice
+  // the stylesheet follows the system setting.
+  function initTheme() {
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    var root = document.documentElement;
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function current() {
+      var set = root.getAttribute('data-theme');
+      if (set === 'light' || set === 'dark') return set;
+      return mq.matches ? 'dark' : 'light';
+    }
+
+    // The theme-color metas follow the OS through their media attributes; once the
+    // visitor picks a theme by hand, both are pinned to that choice.
+    function pinThemeColor(theme) {
+      var color = theme === 'dark' ? '#07080c' : '#f7f6f2';
+      Array.prototype.forEach.call(document.querySelectorAll('meta[name="theme-color"]'), function (m) {
+        m.setAttribute('content', color);
+        m.removeAttribute('media');
+      });
+    }
+
+    function sync() { btn.setAttribute('aria-pressed', String(current() === 'dark')); }
+
+    btn.addEventListener('click', function () {
+      var next = current() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      pinThemeColor(next);
+      try { localStorage.setItem('oo-theme', next); } catch (e) { /* private mode */ }
+      sync();
+    });
+
+    // With no saved choice the page follows the system; keep the button honest when it changes.
+    if (mq.addEventListener) mq.addEventListener('change', sync);
+    else if (mq.addListener) mq.addListener(sync);
+
+    var saved = root.getAttribute('data-theme');
+    if (saved === 'light' || saved === 'dark') pinThemeColor(saved);
+    sync();
+  }
+
   /* ---------------------------------------------------------------- boot */
 
   function boot() {
     initLang();
     initNav();
     initReveal();
-    initMotion();
+    initTheme();
     initCopyMail();
     document.documentElement.classList.add('js-ready');
   }

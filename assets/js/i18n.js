@@ -15,26 +15,25 @@ window.I18N = {
     'a11y.menu': 'Open menu',
     'a11y.footer': 'Footer links',
     'a11y.top': 'Back to top',
-    'a11y.motion': 'Pause the animations',
+    'a11y.theme': 'Dark mode',
 
     /* ---------------------------------------------------------- navigation */
     'nav.work': 'Work',
-    'nav.more': 'Other work',
+    'nav.games': 'Games',
     'nav.skills': 'Skills',
     'nav.contact': 'Contact',
     'nav.cta': "Let's talk",
 
     /* --------------------------------------------------------------- hero */
     'hero.badge': 'Open to analytics, data, AI and engineering roles — Bogotá and remote',
-    'hero.kicker': 'Data governance · Data science · AI engineering',
-    'hero.title1': 'I govern data at',
+    'hero.role': 'Data Governance Engineer · Data Scientist · AI Engineer',
+    'hero.title1': 'Trustworthy data at',
     'hero.title2': 'enterprise scale',
-    'hero.title3': 'and build what runs on top of it.',
-    'hero.lede': "I'm Oscar Ordoñez, a Computer Science graduate of Universidad Nacional de Colombia. Today I govern the data lifecycle across Claro Colombia's ecosystem; before that I built BBVA's acquiring-unit profitability model on AWS and an end-to-end AI agent at Softgic. Off the clock I write voxel engines and network protocols that run inside a browser tab.",
+    'hero.title3': 'and AI that puts it to work.',
+    'hero.lede': "I'm Oscar Ordoñez, a Computer Science graduate of Universidad Nacional de Colombia. Today I govern the data lifecycle at Claro Colombia; before that I built BBVA's acquiring-unit profitability model on AWS and an end-to-end AI agent at Softgic. Off the clock I publish games that run in the browser.",
     'hero.cta1': 'See my experience',
     'hero.cta2': 'Download CV (PDF)',
     'hero.cta3': 'github.com/OdobGames',
-    'hero.scroll': 'Start with the experience',
 
     'fact.1.n': 'Claro · BBVA',
     'fact.1.t': 'Data governance in telco, profitability and BI in banking',
@@ -44,11 +43,18 @@ window.I18N = {
     'fact.3.t': 'B.S. Computer Science, Universidad Nacional de Colombia',
     'fact.4.n': 'English C1',
     'fact.4.t': 'Bogotá, UTC−5: the same working day as the US east coast',
+    'hero.card.title': 'At a glance',
+    'hero.card.cta': 'See the games I publish',
 
     /* ----------------------------------------------------- flagship work */
     'work.eyebrow': 'Selected work',
-    'work.title': 'Four hard things, all live and playable',
-    'work.intro': 'Outside the data work I build real-time systems. All four run in the browser with nothing to install and open right now: not course exercises, but complete systems I had to design end to end.',
+    'work.title': 'Four complete games, online and playable',
+    'work.intro': 'Outside the data work I build real-time systems. All four run in the browser with nothing to install: not course exercises, but complete systems I designed end to end.',
+    'work.challenges': 'Engineering challenges',
+    'work.webcraft.alt': 'WebCraft screenshot: the client main menu in the browser',
+    'work.carritos.alt': 'Carritos screenshot: the kart game main menu',
+    'work.papel.alt': 'Frente de Papel screenshot: a cut-paper arena',
+    'work.backrooms.alt': 'Backrooms Wanderer screenshot: a yellow corridor in first person',
     'work.live': 'Live',
     'work.live2': 'Live',
     'work.live3': 'Live',
@@ -69,8 +75,6 @@ window.I18N = {
     'work.webcraft.c4t': 'State that cannot drift',
     'work.webcraft.c4b': 'Entities, blocks and inventory change on every server tick. The client has to reflect that truth and recover when it falls out of sync.',
     'work.webcraft.cta': 'Open WebCraft',
-    'work.webcraft.canvas': 'Animation of a voxel island loading column by column, evoking chunks arriving from a server',
-    'work.webcraft.note': 'Rendered on this page by a small isometric engine I wrote: a world streaming in chunk by chunk. It is not a screenshot of WebCraft — open the link to see the real thing.',
 
     'work.carritos.hook': 'A voxel kart racer with online multiplayer, in the spirit of Mario Kart.',
     'work.carritos.body': 'Real-time races against other people, inside a browser tab. Everyone sees the same race even though each player is on a different connection.',
@@ -83,8 +87,6 @@ window.I18N = {
     'work.carritos.c4t': 'Rooms and the shape of a match',
     'work.carritos.c4b': 'Join, start, finish, go again. Someone has to decide who gets in, who dropped, and what happens to the race when a player disconnects.',
     'work.carritos.cta': 'Play Carritos',
-    'work.carritos.canvas': 'Animation of voxel karts running a lap around an isometric circuit',
-    'work.carritos.note': 'An animated scene drawn on this page by the same isometric engine. It is not a screenshot of Carritos — the real game is one click away.',
 
     'work.papel.hook': 'A multiplayer first-person shooter where the entire world is cut out of paper.',
     'work.papel.body': 'Online matches inside a browser tab. The level, the cover and the players all have a cut-cardboard finish, and that is not only an art decision: a world made of flat shapes is a world that loads in seconds and runs on any laptop.',
@@ -97,8 +99,6 @@ window.I18N = {
     'work.papel.c4t': 'Making the paper hold up',
     'work.papel.c4b': 'The cardboard finish is built from geometry, silhouettes and flat light rather than heavy textures: here the art direction is also the performance budget.',
     'work.papel.cta': 'Play Frente de Papel',
-    'work.papel.canvas': 'Animation of a cut-paper arena with players from two teams moving between cardboard cover',
-    'work.papel.note': 'A scene drawn on this page by the site\u2019s isometric engine, in paper and cardboard. It is not a screenshot of Frente de Papel — the real game is one click away.',
 
     'work.backrooms.hook': 'A first-person survival roguelike through yellow corridors that never end.',
     'work.backrooms.body': 'Levels generate themselves and are never the same twice. You enter through a browser tab, go as far as your resources hold out, and when the run ends the next attempt starts somewhere nobody has seen before.',
@@ -111,39 +111,22 @@ window.I18N = {
     'work.backrooms.c4t': 'A run you can lose',
     'work.backrooms.c4b': 'A roguelike needs consequences: resources that run out, a death that costs something, and a different world when you start again. Without those, walking corridors is just walking corridors.',
     'work.backrooms.cta': 'Enter Backrooms Wanderer',
-    'work.backrooms.canvas': 'Animation of a maze of yellow rooms with a figure walking the corridors under flickering lights',
-    'work.backrooms.note': 'A maze generated and drawn on this very page by the site\u2019s isometric engine. It is not a screenshot of Backrooms Wanderer — open the link to see it in first person.',
 
-    'midcta.text': 'Curious how any of them is put together? Write to me and I will walk you through it.',
-    'midcta.cta': "Let's talk",
+    'midcta.text': 'Want to see everything I have published, including my Google Play apps?',
+    'midcta.cta': 'Open the games hub',
+    'hub.eyebrow': 'Projects hub',
+    'hub.fallback': 'Direct links:',
+    'hub.title': 'Games and apps I have published',
+    'hub.intro': 'Everything playable runs in the browser with nothing to install. Android apps are on Google Play, and whatever is still being built shows up as coming soon.',
+    'hub.back': 'Back to the portfolio',
+    'hub.legal': 'Minecraft is a registered trademark of Mojang Studios and Mario Kart of Nintendo. No project on this page is affiliated with or endorsed by those companies.',
 
     /* ------------------------------------------------------------- more */
-    'more.eyebrow': 'Other work',
-    'more.title': 'Production, shipped games, and the fundamentals',
-    'more.intro': 'Writing an engine is one thing. Keeping something alive months later, on a machine nobody is watching, is another.',
 
-    'more.dian.kind': 'Python · Automation · Ops',
-    'more.dian.body': "Watches Colombia's DIAN appointment page with headless Chromium and emails an alert the moment a slot opens. It runs in three different places — a PC, GitHub Actions, or a systemd-managed VM — keeps its credentials out of the source in environment variables, installs under its own system user, and cleans up after itself so it can stay switched on for months.",
-    'more.dian.link': 'View the repository',
 
-    'more.play.kind': 'Unity · C# · Google Play',
-    'more.play.title': 'OdobGames on Google Play',
-    'more.play.body': 'The studio I shipped three games under: Heart Tale, an endless Undertale-style battle; Mordecai Infinite Runner, with online scoreboards; and 3D Cube Parkour, a voxel parkour game with global rankings. Every title has a public listing on the store.',
-    'more.play.storesLabel': 'Games on Google Play',
-    'more.play.link': 'Visit the studio',
 
-    'more.retro.kind': 'Web · Front-end',
-    'more.retro.body': 'A site for playing retro classics for free, published on GitHub Pages. An exercise in making something load fast, explain itself, and work on any screen.',
-    'more.retro.link': 'Open the arcade',
 
-    'more.tank.kind': 'Game · Gameplay',
-    'more.tank.body': 'A survival tank game. From the stretch where I was learning to separate the game loop from everything else — and it shows in what came after.',
-    'more.tank.link': 'View the repository',
 
-    'more.cs.kind': 'UNAL · Computer Science',
-    'more.cs.title': 'Fundamentals: AI, crypto and data',
-    'more.cs.body': 'The undergraduate repositories: artificial intelligence projects, digit recognition with machine learning, cryptography, and databases. This is the theory underneath everything else on this page.',
-    'more.cs.link': 'Browse the repositories',
 
     /* ----------------------------------------------------------- skills */
     'skills.eyebrow': 'Skills',
@@ -258,6 +241,7 @@ window.I18N = {
     'footer.left': '© 2026 Oscar Ordoñez — Colombia · Hand-written static site, no framework',
     'footer.source': 'Source of this site',
     'footer.mail': 'Email',
-    'footer.legal': 'Minecraft is a trademark of Mojang Studios and Mario Kart of Nintendo. The projects on this page are not affiliated with or endorsed by either company. · Last updated: September 2026.'
+    'footer.legal': 'Minecraft is a trademark of Mojang Studios and Mario Kart of Nintendo. The projects on this page are not affiliated with or endorsed by either company. · Last updated: October 2026.',
+    'footer.games': 'Games and projects',
   }
 };
