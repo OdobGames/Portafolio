@@ -169,15 +169,16 @@
       "kind": "web",
       "status": "playable",
       "tagline": {
-        "es": "Incremental 3D de cartas coleccionables.",
-        "en": "A 3D collectible-card incremental."
+        "es": "Un incremental 3D sobre una tienda de cartas coleccionables.",
+        "en": "A 3D incremental about running a trading-card shop."
       },
       "description": {
-        "es": "Abre sobres, vende, encuaderna o gradúa cartas con un mercado que se mueve cada semana, y paga una renta que no deja de subir. Ratón.",
-        "en": "Open packs, sell, bind or grade cards in a market that moves every week, and pay a rent that keeps climbing. Mouse."
+        "es": "Abre sobres, vende, encuaderna o gradúa cada carta y paga la renta cada viernes. Árbol de mejoras radial, retiro con ventajas permanentes, compra del edificio y contratos de desafío, con música y efectos sintetizados. Ratón.",
+        "en": "Open packs, sell, bind or grade every card and pay the rent each Friday. A radial upgrade tree, retirement with permanent perks, buying the building and challenge leases, with synthesized music and effects. Mouse."
       },
       "stack": [
         "Three.js",
+        "Web Audio",
         "ES modules",
         "Cloudflare Pages"
       ],
