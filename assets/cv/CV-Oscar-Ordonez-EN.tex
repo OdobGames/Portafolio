@@ -14,12 +14,16 @@
 %==============================================================================
 \documentclass[letterpaper,10pt]{article}
 
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-
-% Carlito es métricamente compatible con Calibri: mismo ancho, mismo aspecto,
-% y sí está disponible en Overleaf (Calibri no lo está, es de Microsoft).
-\usepackage[sfdefault]{carlito}
+% Carlito is metrically compatible with Calibri: same widths, same look, and unlike
+% Calibri it is available on Overleaf. The "lining" option forces lining figures: with
+% oldstyle figures the digits are not mapped to Unicode and an ATS would read the
+% phone, the dates and the email as garbage.
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\fi
+\usepackage[sfdefault,lining]{carlito}
 
 \usepackage[english]{babel}
 \usepackage[letterpaper,top=0.83in,bottom=0.65in,left=0.75in,right=0.72in]{geometry}
@@ -27,6 +31,13 @@
 \usepackage{enumitem}
 \usepackage{needspace}
 \usepackage[hidelinks]{hyperref}
+
+% Glyph-to-Unicode map: with pdfLaTeX it makes the text that an ATS (or a copy and
+% paste) reads come out with accents and without odd ligatures. Other engines skip it.
+\ifdefined\pdfgentounicode
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
 
 %------------------------------------------------------------------ colores --
 \definecolor{cvdark}{RGB}{31,56,100}   % #1F3864  nombre y cargos
@@ -37,6 +48,8 @@
   colorlinks=true, urlcolor=cvgray, linkcolor=cvgray,
   pdftitle={CV — Oscar Ordóñez},
   pdfauthor={Oscar Ordóñez},
+  pdfkeywords={Data Governance, Databricks, Unity Catalog, AWS, Python, SQL, PySpark, DAMA-DMBOK2, LLM, Data Quality},
+  pdflang={en-US},
   pdfsubject={Data Governance Engineer · Data Scientist · AI Engineer}
 }
 
@@ -66,9 +79,9 @@
   \needspace{3\baselineskip}%
   \vspace{13pt}%
   {\color{cvblue}\sizeSection\bfseries #1}\par
-  \vspace{2pt}%
+  \vspace{-5pt}%
   {\color{cvblue}\rule{\textwidth}{0.7pt}}\par
-  \vspace{-6pt}%
+  \vspace{3pt}%
 }
 
 \newcommand{\cvrole}[2]{%
@@ -105,7 +118,7 @@
   {\color{cvgray}\sizeContact
     Bogotá, Colombia\sepdot
     \href{tel:+573227596832}{+57 322 759 6832}\sepdot
-    \href{mailto:oordonezb@unal.edu.co}{oordonezb@unal.edu.co}}\\[0pt]
+    \href{mailto:13odob27@gmail.com}{13odob27@gmail.com}}\\[0pt]
   {\color{cvgray}\sizeContact
     \href{https://www.linkedin.com/in/oscarordonez13}{LinkedIn}\sepdot
     \href{https://github.com/OdobGames}{GitHub}\sepdot
