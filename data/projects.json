@@ -1,0 +1,213 @@
+{
+  "projects": [
+    {
+      "id": "webcraft",
+      "name": "WebCraft",
+      "kind": "web",
+      "status": "playable",
+      "tagline": {
+        "es": "Un cliente de Minecraft que corre en el navegador.",
+        "en": "A Minecraft client that runs in the browser."
+      },
+      "description": {
+        "es": "Implementación propia que se conecta a servidores de Java Edition: sin instalador, sin launcher y sin máquina virtual de Java.",
+        "en": "A from-scratch client that connects to Java Edition servers: no installer, no launcher and no Java virtual machine."
+      },
+      "stack": [
+        "JavaScript",
+        "Minecraft protocol",
+        "Voxel rendering",
+        "Cloudflare Pages"
+      ],
+      "url": "https://webcraft-8p8.pages.dev/",
+      "thumb": "assets/img/projects/webcraft.webp",
+      "year": 2026,
+      "order": 10
+    },
+    {
+      "id": "carritos",
+      "name": "Carritos",
+      "kind": "web",
+      "status": "playable",
+      "tagline": {
+        "es": "Karts voxel con multijugador en línea.",
+        "en": "Voxel karts with online multiplayer."
+      },
+      "description": {
+        "es": "Carreras en tiempo real contra otras personas dentro de una pestaña del navegador, con cinco circuitos, ítems y bots.",
+        "en": "Real-time races against other people inside a browser tab, with five circuits, items and bots."
+      },
+      "stack": [
+        "Three.js",
+        "TypeScript",
+        "WebRTC",
+        "Cloudflare Pages"
+      ],
+      "url": "https://carritos-bty.pages.dev/",
+      "thumb": "assets/img/projects/carritos.webp",
+      "year": 2026,
+      "order": 20
+    },
+    {
+      "id": "frente-de-papel",
+      "name": "Frente de Papel",
+      "kind": "web",
+      "status": "playable",
+      "tagline": {
+        "es": "Shooter en primera persona hecho de papel recortado.",
+        "en": "A first-person shooter made of cut paper."
+      },
+      "description": {
+        "es": "Partidas en línea de 1 a 4 jugadores en un mundo de cartón que carga en segundos y corre en cualquier portátil.",
+        "en": "Online matches for 1 to 4 players in a cardboard world that loads in seconds and runs on any laptop."
+      },
+      "stack": [
+        "Three.js",
+        "WebRTC",
+        "Lag compensation",
+        "Cloudflare Pages"
+      ],
+      "url": "https://frente-de-papel.pages.dev/",
+      "thumb": "assets/img/projects/frente-de-papel.webp",
+      "year": 2026,
+      "order": 30
+    },
+    {
+      "id": "backrooms-wanderer",
+      "name": "Backrooms Wanderer",
+      "kind": "web",
+      "status": "playable",
+      "tagline": {
+        "es": "Roguelike de supervivencia por pasillos amarillos.",
+        "en": "A survival roguelike through endless yellow corridors."
+      },
+      "description": {
+        "es": "Niveles generados proceduralmente, en primera persona, con audio y animaciones propias. Cada intento empieza en un sitio distinto.",
+        "en": "Procedurally generated first-person levels with custom audio and animation. Every run starts somewhere new."
+      },
+      "stack": [
+        "Three.js",
+        "Procedural generation",
+        "Roguelike",
+        "Cloudflare Pages"
+      ],
+      "url": "https://backrooms-wanderer.pages.dev/",
+      "thumb": "assets/img/projects/backrooms-wanderer.webp",
+      "year": 2026,
+      "order": 40
+    },
+    {
+      "id": "openworld",
+      "name": "OpenWorld",
+      "kind": "android",
+      "status": "store",
+      "tagline": {
+        "es": "App social para conocer personas y chatear.",
+        "en": "A social app to meet people and chat."
+      },
+      "description": {
+        "es": "Aplicación nativa de Android publicada en Google Play, con autenticación, chat y moderación sobre Firebase.",
+        "en": "A native Android app published on Google Play, with authentication, chat and moderation on Firebase."
+      },
+      "stack": [
+        "Kotlin",
+        "Jetpack Compose",
+        "Firebase"
+      ],
+      "url": "https://play.google.com/store/apps/details?id=com.odobgames.openworld",
+      "year": 2026,
+      "order": 50,
+      "thumb": "assets/img/projects/openworld.webp"
+    },
+    {
+      "id": "retro-arcade",
+      "name": "Retro Arcade Games",
+      "kind": "web",
+      "status": "playable",
+      "tagline": {
+        "es": "Clásicos retro gratis en el navegador.",
+        "en": "Free retro classics in the browser."
+      },
+      "description": {
+        "es": "Una web para jugar clásicos retro, publicada en GitHub Pages: carga rápido y funciona en cualquier pantalla.",
+        "en": "A website for playing retro classics, hosted on GitHub Pages: it loads fast and works on any screen."
+      },
+      "stack": [
+        "JavaScript",
+        "HTML5",
+        "GitHub Pages"
+      ],
+      "url": "https://odobgames.github.io/Retro-Arcade-Games/",
+      "year": 2024,
+      "order": 90
+    },
+    {
+      "id": "abyssal-tide",
+      "name": "Abyssal Tide",
+      "kind": "pc",
+      "status": "coming-soon",
+      "tagline": {
+        "es": "Un incremental de pesca en primera persona. Próximamente en Steam.",
+        "en": "A first-person fishing incremental. Coming soon to Steam."
+      },
+      "description": {
+        "es": "Recorre un pueblo pesquero, lanza el anzuelo, recoge la presa, mejora tu equipo y viaja por seis zonas hasta enfrentar al Leviatán.",
+        "en": "Walk a fishing village, cast your line, reel in the catch, upgrade your gear and travel six zones to face the Leviathan."
+      },
+      "stack": [
+        "Three.js",
+        "Electron",
+        "Steam"
+      ],
+      "year": 2026,
+      "order": 55,
+      "thumb": "assets/img/projects/abyssal-tide.webp"
+    },
+    {
+      "id": "holo",
+      "name": "HOLO",
+      "kind": "web",
+      "status": "playable",
+      "tagline": {
+        "es": "Incremental 3D de cartas coleccionables.",
+        "en": "A 3D collectible-card incremental."
+      },
+      "description": {
+        "es": "Abre sobres, vende, encuaderna o gradúa cartas con un mercado que se mueve cada semana, y paga una renta que no deja de subir. Ratón.",
+        "en": "Open packs, sell, bind or grade cards in a market that moves every week, and pay a rent that keeps climbing. Mouse."
+      },
+      "stack": [
+        "Three.js",
+        "ES modules",
+        "Cloudflare Pages"
+      ],
+      "url": "https://holo-incremental.pages.dev/",
+      "thumb": "assets/img/projects/holo.webp",
+      "year": 2026,
+      "order": 44
+    },
+    {
+      "id": "undead-protocol",
+      "name": "Undead Protocol",
+      "kind": "web",
+      "status": "playable",
+      "tagline": {
+        "es": "Shooter de supervivencia por oleadas en primera persona.",
+        "en": "First-person wave-survival shooter."
+      },
+      "description": {
+        "es": "Armas, ventajas y oleadas de zombis en un mapa propio, hecho en Three.js. Un jugador. Teclado y ratón.",
+        "en": "Weapons, perks and zombie waves on a custom map, built with Three.js. Single player. Keyboard and mouse."
+      },
+      "stack": [
+        "Three.js",
+        "Vite",
+        "Cloudflare Pages"
+      ],
+      "url": "https://undead-protocol.pages.dev/",
+      "thumb": "assets/img/projects/undead-protocol.webp",
+      "year": 2026,
+      "order": 45
+    }
+  ]
+}
