@@ -150,10 +150,14 @@ window.I18N = {
     /* -------------------------------------------------------- experience */
     'nav.exp': 'Experience',
     'exp.eyebrow': 'Professional experience',
+    'exp.1d': 'Apr 2026 &mdash; present',
+    'exp.2d': 'Jan &mdash; Feb 2026',
+    'exp.3d': 'Mar 2025 &mdash; Jan 2026',
+    'exp.4d': 'Sep 2024 &mdash; Feb 2025',
+    'exp.5d': 'Jan 2023 &mdash; present',
+    'exp.6d': '2019 &mdash; 2025',
     'exp.title': 'Data, AI and decisions inside large operations',
     'exp.intro': 'Telco, banking and AI consulting. Underneath, all three were the same job: make data that is large, messy and scattered good enough to decide on.',
-    'exp.now': 'now',
-    'exp.now2': 'now',
 
     'exp.1t': 'Data Governance Engineer',
     'exp.1w': 'Grupo CINTE — on assignment at Claro Colombia · Bogotá',
